@@ -1,2 +1,2 @@
 # FMR: Functional Meaning Representation & Semantic Parsing Framework
-[![GoD
+[![GoDoc](https://godoc.org/github.com/liuzl/fmr?status.svg)](https:
