@@ -4,4 +4,7 @@
 ## Projects that uses FMR
 
 ### mathsolver
-* codes: https://github.com/liuzl/mat
+* codes: https://github.com/liuzl/mathsolver
+* demo: https://mathsolver.zliu.org/
+
+## What is sema
