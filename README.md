@@ -7,4 +7,5 @@
 * codes: https://github.com/liuzl/mathsolver
 * demo: https://mathsolver.zliu.org/
 
-## What is sema
+## What is semantic parsing?
+Semantic parsing is the process of mappi
