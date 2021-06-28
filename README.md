@@ -10,4 +10,4 @@
 ## What is semantic parsing?
 Semantic parsing is the process of mapping a natural language sentence into an intermediate logical form which is a formal representation of its meaning.
 
-The f
+The formal representation should be a detailed representation of the complete meaning of the natural language sentence in a fully fo
