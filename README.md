@@ -12,4 +12,7 @@ Semantic parsing is the process of mapping a natural language sentence into an i
 
 The formal representation should be a detailed representation of the complete meaning of the natural language sentence in a fully formal language that:
 
-* Has a rich ontology of types, properties, a
+* Has a rich ontology of types, properties, and relations.
+* Supports automated reasoning or execution.
+
+## Rep
