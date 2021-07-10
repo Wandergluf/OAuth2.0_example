@@ -15,4 +15,5 @@ The formal representation should be a detailed representation of the complete me
 * Has a rich ontology of types, properties, and relations.
 * Supports automated reasoning or execution.
 
-## Rep
+## Representation languages
+Early semantic parsers used highly domain-speci
