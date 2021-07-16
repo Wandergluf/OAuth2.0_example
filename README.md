@@ -16,4 +16,4 @@ The formal representation should be a detailed representation of the complete me
 * Supports automated reasoning or execution.
 
 ## Representation languages
-Early semantic parsers used highly domain-speci
+Early semantic parsers used highly domain-specific meaning representation languages, with later systems using more 
