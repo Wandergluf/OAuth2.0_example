@@ -16,4 +16,4 @@ The formal representation should be a detailed representation of the complete me
 * Supports automated reasoning or execution.
 
 ## Representation languages
-Early semantic parsers used highly domain-specific meaning representation languages, with later systems using more extensible languages like Prolog, lambda calculus, lambda dependancy-based compositional semantics (λ-DCS), SQL, Python, Java, and the Alexa Meaning Representation Language. Some work h
+Early semantic parsers used highly domain-specific meaning representation languages, with later systems using more extensible languages like Prolog, lambda calculus, lambda dependancy-based compositional semantics (λ-DCS), SQL, Python, Java, and the Alexa Meaning Representation Language. Some work has used more exotic meaning representations, like query graph
