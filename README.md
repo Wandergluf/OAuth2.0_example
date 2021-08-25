@@ -21,4 +21,4 @@ Early semantic parsers used highly domain-specific meaning representation langua
 ### FMR, a formal meaning representation language
 * FMR stands for  functional meaning representation
 * Context-Free Grammar for bridging NL and FMR
-* *[VIM 
+* *[VIM Syntax highlighting for FMR grammar file](https:
