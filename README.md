@@ -24,4 +24,7 @@ Early semantic parsers used highly domain-specific meaning representation langua
 * *[VIM Syntax highlighting for FMR grammar file](https://github.com/liuzl/vim-fmr)*
 
 ## Tasks
-* Grammar check
+* Grammar checkers
+* Dialogue management
+* Question answering
+* Information extra
