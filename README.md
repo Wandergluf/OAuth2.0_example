@@ -27,4 +27,7 @@ Early semantic parsers used highly domain-specific meaning representation langua
 * Grammar checkers
 * Dialogue management
 * Question answering
-* Information extra
+* Information extraction
+* Machine translation
+
+## What can FMR do, a gla
