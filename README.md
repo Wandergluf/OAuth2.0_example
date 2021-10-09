@@ -33,4 +33,9 @@ Early semantic parsers used highly domain-specific meaning representation langua
 ## What can FMR do, a glance overview
 ```js
 // semantic parsing
-"五与5.8的和的平方的1.5次方与two的和减去261.712"
+"五与5.8的和的平方的1.5次方与two的和减去261.712" =>
+nf.math.sub(
+  nf.math.sum(
+    nf.math.pow(
+      nf.math.pow(
+        nf.math.su
