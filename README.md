@@ -43,3 +43,8 @@ nf.math.sub(
           nf.math.to_number("5.8")
         ),
         2
+      ),
+      nf.math.to_number("1.5")
+    ),
+    2
+  ),
