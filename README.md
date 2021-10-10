@@ -38,4 +38,8 @@ nf.math.sub(
   nf.math.sum(
     nf.math.pow(
       nf.math.pow(
-        nf.math.su
+        nf.math.sum(
+          5,
+          nf.math.to_number("5.8")
+        ),
+        2
