@@ -48,3 +48,8 @@ nf.math.sub(
     ),
     2
   ),
+  nf.math.to_number("261.712")
+); // denotation: 1000
+
+// slot filling
+"从上海到天
