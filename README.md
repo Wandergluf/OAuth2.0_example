@@ -53,4 +53,8 @@ nf.math.sub(
 
 // slot filling
 "从上海到天津的机票" => nf.flight("上海", "天津");
-"到重庆，明天，从北京" => nf.flight
+"到重庆，明天，从北京" => nf.flight("北京", "重庆");
+"到上海去" => nf.flight(null, "上海");
+```
+
+## References
