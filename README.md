@@ -58,4 +58,4 @@ nf.math.sub(
 ```
 
 ## References
-* [Semantic Parsing: Past, Present, and Future](http:/
+* [Semantic Parsing: Past, Present, and Future](http://yoavartzi.com/sp14/slides/mooney.sp14.pdf), Raymond J. Mooney, 2014
