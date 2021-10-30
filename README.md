@@ -59,4 +59,5 @@ nf.math.sub(
 
 ## References
 * [Semantic Parsing: Past, Present, and Future](http://yoavartzi.com/sp14/slides/mooney.sp14.pdf), Raymond J. Mooney, 2014
-* [Introduction to semantic parsing](https://github.com/liuzl/fmr-files/blob/master/cs224u-2019-intro-semparse.pdf), Bill MacCartney
+* [Introduction to semantic parsing](https://github.com/liuzl/fmr-files/blob/master/cs224u-2019-intro-semparse.pdf), Bill MacCartney, 2019
+* [Bringing machine learning and compositional semant
