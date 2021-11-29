@@ -194,3 +194,34 @@ func (g *Grammar) process(
 		if *ctxTagger == "" {
 			return nil, nil, fmt.Errorf("ctxTagger should be supplied")
 		}
+		vurl, err := url.ParseRequestURI(*ctxTagger)
+		if err != nil {
+			return nil, nil, err
+		}
+		c := vurl.Query()
+		c.Set("context", context)
+		vurl.RawQuery = c.Encode()
+		tagger, err := ling.NewAPITagger(vurl.String())
+		if err != nil {
+			return nil, nil, err
+		}
+		if err = NLP().AnnotatePro(d, tagger); err != nil {
+			return nil, nil, err
+		}
+	}
+	var ret []*ling.Token
+	for _, token := range d.Tokens {
+		if token.Type == ling.Space {
+			continue
+		}
+		ret = append(ret, token)
+	}
+	if len(ret) == 0 {
+		return nil, nil, fmt.Errorf("no tokens")
+	}
+	l, err := g.localGrammar(d)
+	if err != nil {
+		return nil, nil, err
+	}
+	return ret, l, nil
+}
