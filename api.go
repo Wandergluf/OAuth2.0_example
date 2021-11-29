@@ -51,3 +51,82 @@ func NLP() *ling.Pipeline {
 func (g *Grammar) EarleyParse(text string, starts ...string) (*Parse, error) {
 	return g.EarleyParseWithContext("", text, starts...)
 }
+
+// EarleyParseWithContext with context information
+func (g *Grammar) EarleyParseWithContext(
+	context, text string, starts ...string) (*Parse, error) {
+	tokens, l, err := g.process(context, text)
+	if err != nil {
+		return nil, err
+	}
+	return g.earleyParse(true, text, tokens, l, starts...)
+}
+
+// EarleyParseAny parses text for rule <start> at any position
+func (g *Grammar) EarleyParseAny(
+	text string, starts ...string) (*Parse, error) {
+
+	return g.EarleyParseAnyWithContext("", text, starts...)
+}
+
+//EarleyParseAnyWithContext with context information
+func (g *Grammar) EarleyParseAnyWithContext(
+	context, text string, starts ...string) (*Parse, error) {
+
+	tokens, l, err := g.process(context, text)
+	if err != nil {
+		return nil, err
+	}
+	var p *Parse
+	for i := 0; i < len(tokens); i++ {
+		if p, err = g.earleyParse(
+			true, text, tokens[i:], l, starts...); err != nil {
+			return nil, err
+		}
+		if p.finalStates != nil {
+			return p, nil
+		}
+	}
+	return p, nil
+}
+
+// EarleyParseMaxAll extracts all submatches in text for rule <start>
+func (g *Grammar) EarleyParseMaxAll(
+	text string, starts ...string) ([]*Parse, error) {
+	return g.EarleyParseMaxAllWithContext("", text, starts...)
+}
+
+// EarleyParseMaxAllWithContext with context information
+func (g *Grammar) EarleyParseMaxAllWithContext(
+	context, text string, starts ...string) ([]*Parse, error) {
+	tokens, l, err := g.process(context, text)
+	if err != nil {
+		return nil, err
+	}
+	var ret []*Parse
+	for i := 0; i < len(tokens); {
+		p, err := g.earleyParse(true, text, tokens[i:], l, starts...)
+		if err != nil {
+			return nil, err
+		}
+		if p.finalStates != nil {
+			ret = append(ret, p)
+			max := 0
+			for _, finalState := range p.finalStates {
+				if finalState.End > max {
+					max = finalState.End
+				}
+			}
+			i += max
+		} else {
+			i++
+		}
+	}
+	return ret, nil
+}
+
+// EarleyParseAll extracts all submatches in text for rule <start>
+func (g *Grammar) EarleyParseAll(
+	text string, starts ...string) ([]*Parse, error) {
+	return g.EarleyParseAllWithContext("", text, starts...)
+}
