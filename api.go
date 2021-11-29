@@ -130,3 +130,67 @@ func (g *Grammar) EarleyParseAll(
 	text string, starts ...string) ([]*Parse, error) {
 	return g.EarleyParseAllWithContext("", text, starts...)
 }
+
+// EarleyParseAllWithContext with context information
+func (g *Grammar) EarleyParseAllWithContext(
+	context, text string, starts ...string) ([]*Parse, error) {
+	tokens, l, err := g.process(context, text)
+	if err != nil {
+		return nil, err
+	}
+	var ret []*Parse
+	for i := 0; i < len(tokens); i++ {
+		p, err := g.earleyParse(false, text, tokens[i:], l, starts...)
+		if err != nil {
+			return nil, err
+		}
+		if p.finalStates != nil {
+			ret = append(ret, p)
+			//i += p.finalState.End
+		}
+	}
+	return ret, nil
+}
+
+func (g *Grammar) earleyParse(maxFlag bool, text string,
+	tokens []*ling.Token, l *Grammar, starts ...string) (*Parse, error) {
+	if len(starts) == 0 {
+		return nil, fmt.Errorf("no start rules")
+	}
+	if len(tokens) == 0 {
+		return nil, fmt.Errorf("no tokens to parse")
+	}
+
+	parse := &Parse{grammars: []*Grammar{g}, text: text, starts: starts}
+	if len(g.includes) > 0 {
+		parse.grammars = append(parse.grammars, g.includes...)
+	}
+	if l != nil {
+		parse.grammars = append(parse.grammars, l)
+	}
+	parse.columns = append(parse.columns, &TableColumn{index: 0, token: nil})
+	for _, token := range tokens {
+		parse.columns = append(parse.columns,
+			&TableColumn{index: len(parse.columns), token: token})
+	}
+	parse.parse(maxFlag)
+	if Debug {
+		fmt.Println(parse)
+	}
+	return parse, nil
+}
+
+func (g *Grammar) process(
+	context, text string) ([]*ling.Token, *Grammar, error) {
+	if text = strings.TrimSpace(text); text == "" {
+		return nil, nil, fmt.Errorf("text is empty")
+	}
+	d := ling.NewDocument(text)
+	if context == "" {
+		if err := NLP().Annotate(d); err != nil {
+			return nil, nil, err
+		}
+	} else {
+		if *ctxTagger == "" {
+			return nil, nil, fmt.Errorf("ctxTagger should be supplied")
+		}
