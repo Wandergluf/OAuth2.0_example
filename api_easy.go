@@ -8,4 +8,7 @@ func (g *Grammar) Parse(text string, starts ...string) ([]*Node, error) {
 			return nil, err
 		}
 		return []*Parse{p}, nil
-	}, text, s
+	}, text, starts...)
+}
+
+// ParseAny returns parse trees fo
