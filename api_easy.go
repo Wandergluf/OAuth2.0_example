@@ -11,4 +11,5 @@ func (g *Grammar) Parse(text string, starts ...string) ([]*Node, error) {
 	}, text, starts...)
 }
 
-// ParseAny returns parse trees fo
+// ParseAny returns parse trees for rule <start> at any position
+func (g *Grammar) ParseAny(text
