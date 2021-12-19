@@ -13,4 +13,6 @@ func (g *Grammar) Parse(text string, starts ...string) ([]*Node, error) {
 
 // ParseAny returns parse trees for rule <start> at any position
 func (g *Grammar) ParseAny(text string, starts ...string) ([]*Node, error) {
-	return g.extra
+	return g.extract(
+		func(text string, starts ...string) ([]*Parse, error) {
+			p, err :
