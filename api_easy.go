@@ -17,4 +17,7 @@ func (g *Grammar) ParseAny(text string, starts ...string) ([]*Node, error) {
 		func(text string, starts ...string) ([]*Parse, error) {
 			p, err := g.EarleyParseAny(text, starts...)
 			if err != nil {
-	
+				return nil, err
+			}
+			return []*Parse{p}, nil
+		},
