@@ -20,4 +20,7 @@ func (g *Grammar) ParseAny(text string, starts ...string) ([]*Node, error) {
 				return nil, err
 			}
 			return []*Parse{p}, nil
-		},
+		}, text, starts...)
+}
+
+// ExtractMaxAll extracts all par
