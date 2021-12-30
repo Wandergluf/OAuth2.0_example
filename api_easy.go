@@ -25,4 +25,5 @@ func (g *Grammar) ParseAny(text string, starts ...string) ([]*Node, error) {
 
 // ExtractMaxAll extracts all parse trees in text for rule <start>
 func (g *Grammar) ExtractMaxAll(
-	tex
+	text string, starts ...string) ([]*Node, error) {
+	return g.extrac
