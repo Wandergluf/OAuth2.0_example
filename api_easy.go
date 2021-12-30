@@ -23,4 +23,6 @@ func (g *Grammar) ParseAny(text string, starts ...string) ([]*Node, error) {
 		}, text, starts...)
 }
 
-// ExtractMaxAll extracts all par
+// ExtractMaxAll extracts all parse trees in text for rule <start>
+func (g *Grammar) ExtractMaxAll(
+	tex
