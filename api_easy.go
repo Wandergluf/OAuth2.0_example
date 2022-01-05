@@ -29,4 +29,5 @@ func (g *Grammar) ExtractMaxAll(
 	return g.extract(g.EarleyParseMaxAll, text, starts...)
 }
 
-// ExtractAll extra
+// ExtractAll extracts all parse trees in text for rule <start>
+func (g *Grammar) ExtractAl
