@@ -30,4 +30,5 @@ func (g *Grammar) ExtractMaxAll(
 }
 
 // ExtractAll extracts all parse trees in text for rule <start>
-func (g *Grammar) ExtractAl
+func (g *Grammar) ExtractAll(text string, starts ...string) ([]*Node, error) {
+	
