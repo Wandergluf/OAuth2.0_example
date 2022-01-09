@@ -34,4 +34,4 @@ func (g *Grammar) ExtractAll(text string, starts ...string) ([]*Node, error) {
 	return g.extract(g.EarleyParseAll, text, starts...)
 }
 
-f
+func (g *Grammar) extract(f func(string, ...string) ([]*Pars
