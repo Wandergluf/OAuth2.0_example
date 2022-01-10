@@ -36,4 +36,7 @@ func (g *Grammar) ExtractAll(text string, starts ...string) ([]*Node, error) {
 
 func (g *Grammar) extract(f func(string, ...string) ([]*Parse, error),
 	text string, starts ...string) ([]*Node, error) {
-	ps, er
+	ps, err := f(text, starts...)
+	if err != nil {
+		return nil, err
+	}
