@@ -40,3 +40,6 @@ func (g *Grammar) extract(f func(string, ...string) ([]*Parse, error),
 	if err != nil {
 		return nil, err
 	}
+	var ret []*Node
+	for _, p := range ps {
+		for _, f 
