@@ -42,4 +42,5 @@ func (g *Grammar) extract(f func(string, ...string) ([]*Parse, error),
 	}
 	var ret []*Node
 	for _, p := range ps {
-		for _, f 
+		for _, f := range p.GetFinalStates() {
+			ret = append(ret, p.GetTrees(f).
