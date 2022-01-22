@@ -324,3 +324,61 @@ func (p *parser) rule(c rune, g *Grammar) (*Rule, error) {
 	if err = p.eat('='); err != nil {
 		return nil, err
 	}
+	if err = p.comments(); err != nil {
+		return nil, err
+	}
+	body, err := p.ruleBodies(g)
+	if err != nil {
+		return nil, err
+	}
+	if err = p.eat(';'); err != nil {
+		return nil, err
+	}
+	return &Rule{name, body}, nil
+}
+
+func (p *parser) grammar(files map[string]int) (*Grammar, error) {
+	g := &Grammar{
+		Name:    p.fname,
+		Rules:   make(map[string]*Rule),
+		Frames:  make(map[string]*Rule),
+		Regexps: make(map[string]string),
+	}
+	for {
+		if err := p.comments(); err != nil {
+			return nil, err
+		}
+		if p.peek() != '#' {
+			break
+		}
+		p.eat('#')
+		p.ws()
+		name, err := p.text()
+		if err != nil {
+			return nil, err
+		}
+		if name != "include" {
+			return nil, fmt.Errorf(
+				"%s: directive:(%s) not suppported", p.posInfo(), name)
+		}
+		p.ws()
+		_, ifile, err := p.terminal()
+		if err != nil {
+			return nil, err
+		}
+		ifile = filepath.Join(p.dir, ifile)
+		files[ifile]++
+		ig, err := grammarFromFile(ifile, files)
+		if err != nil {
+			return nil, err
+		}
+		if ig == nil {
+			continue
+		}
+		g.includes = append(g.includes, ig)
+		g.includes = append(g.includes, ig.includes...)
+		for k, v := range ig.Regexps {
+			g.Regexps[k] = v
+		}
+	}
+	for {
