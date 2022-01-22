@@ -136,3 +136,70 @@ func (p *parser) peek() rune {
 	p.backup()
 	return r
 }
+
+func (p *parser) ws() string {
+	var ret []rune
+	for r := p.next(); unicode.IsSpace(r); r = p.next() {
+		ret = append(ret, r)
+	}
+	p.backup()
+	return string(ret)
+}
+
+func (p *parser) text() (string, error) {
+	var ret []rune
+	first := true
+Loop:
+	for {
+		switch r := p.next(); {
+		case unicode.IsLetter(r) || r == '_':
+			ret = append(ret, r)
+		case unicode.IsDigit(r) && !first:
+			ret = append(ret, r)
+		default:
+			p.backup()
+			break Loop
+		}
+		first = false
+	}
+	if len(ret) == 0 {
+		return "", fmt.Errorf("%s : no text", p.posInfo())
+	}
+	return string(ret), nil
+}
+
+func (p *parser) token(begin, end rune) (name string, err error) {
+	if err = p.eat(begin); err != nil {
+		return
+	}
+	if name, err = p.text(); err != nil {
+		return
+	}
+	err = p.eat(end)
+	return
+}
+
+func (p *parser) nonterminal() (string, error) {
+	return p.token('<', '>')
+}
+
+func (p *parser) frame() (string, error) {
+	return p.token('[', ']')
+}
+
+func (p *parser) term(g *Grammar) (*Term, error) {
+	switch p.peek() {
+	case '<':
+		name, err := p.nonterminal()
+		if err != nil {
+			return nil, err
+		}
+		return &Term{Value: name, Type: Nonterminal}, nil
+	case '"':
+		flags, text, err := p.terminal()
+		if err != nil {
+			return nil, err
+		}
+		if flags == "" {
+			return &Term{Value: text, Type: Terminal}, nil
+		}
