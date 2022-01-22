@@ -203,3 +203,66 @@ func (p *parser) term(g *Grammar) (*Term, error) {
 		if flags == "" {
 			return &Term{Value: text, Type: Terminal}, nil
 		}
+		return &Term{Value: text, Type: Terminal, Meta: flags}, nil
+	case '(':
+		return p.special()
+	case '`':
+		return p.regex(g)
+	}
+	return nil, fmt.Errorf("%s :invalid term char", p.posInfo())
+}
+
+func (p *parser) getInt() (idx int, err error) {
+	idx = -1
+	var n uint64
+	var r rune
+	for r = p.next(); unicode.IsDigit(r); r = p.next() {
+		if n, err = strconv.ParseUint(string(r), 10, 32); err != nil {
+			return
+		}
+		if idx == -1 {
+			idx = int(n)
+		} else {
+			idx = idx*10 + int(n)
+		}
+	}
+	if idx == -1 {
+		err = fmt.Errorf("%s : number expected", p.posInfo())
+		return
+	}
+	p.backup()
+	return
+}
+
+func (p *parser) ruleBody(g *Grammar) (*RuleBody, error) {
+	t, err := p.term(g)
+	if err != nil {
+		return nil, err
+	}
+	terms := []*Term{t}
+	if err = p.comments(); err != nil {
+		return nil, err
+	}
+	for {
+		if err = p.comments(); err != nil {
+			return nil, err
+		}
+		if !strings.ContainsRune("<\"(`", p.peek()) {
+			break
+		}
+		if t, err = p.term(g); err != nil {
+			return nil, err
+		}
+		terms = append(terms, t)
+		if err = p.comments(); err != nil {
+			return nil, err
+		}
+	}
+	var f *FMR
+	if p.peek() == '{' {
+		p.eat('{')
+		if f, err = p.semanticFn(); err != nil {
+			return nil, err
+		}
+		if err = p.eat('}'); err != nil {
+			return nil, err
