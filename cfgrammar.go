@@ -266,3 +266,61 @@ func (p *parser) ruleBody(g *Grammar) (*RuleBody, error) {
 		}
 		if err = p.eat('}'); err != nil {
 			return nil, err
+		}
+		if err = p.comments(); err != nil {
+			return nil, err
+		}
+	}
+	return &RuleBody{terms, f}, nil
+}
+
+func (p *parser) ruleBodies(g *Grammar) (map[uint64]*RuleBody, error) {
+	r, err := p.ruleBody(g)
+	if err != nil {
+		return nil, err
+	}
+	hash, err := hashstructure.Hash(r, nil)
+	if err != nil {
+		return nil, err
+	}
+	rules := map[uint64]*RuleBody{hash: r}
+	for {
+		if p.peek() != '|' {
+			break
+		}
+		p.eat('|')
+		if err = p.comments(); err != nil {
+			return nil, err
+		}
+		if r, err = p.ruleBody(g); err != nil {
+			return nil, err
+		}
+		if hash, err = hashstructure.Hash(r, nil); err != nil {
+			return nil, err
+		}
+		rules[hash] = r
+	}
+	return rules, nil
+}
+
+func (p *parser) rule(c rune, g *Grammar) (*Rule, error) {
+	var name string
+	var err error
+	switch c {
+	case '<':
+		if name, err = p.nonterminal(); err != nil {
+			return nil, err
+		}
+	case '[':
+		if name, err = p.frame(); err != nil {
+			return nil, err
+		}
+	default:
+		return nil, fmt.Errorf("%s : unexpected char", p.posInfo())
+	}
+	if err = p.comments(); err != nil {
+		return nil, err
+	}
+	if err = p.eat('='); err != nil {
+		return nil, err
+	}
