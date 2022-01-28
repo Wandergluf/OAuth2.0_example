@@ -382,3 +382,39 @@ func (p *parser) grammar(files map[string]int) (*Grammar, error) {
 		}
 	}
 	for {
+		if err := p.comments(); err != nil {
+			return nil, err
+		}
+
+		c := p.peek()
+		if !strings.ContainsRune(`<[`, c) {
+			break
+		}
+		r, err := p.rule(c, g)
+		if err != nil {
+			return nil, err
+
+		}
+		rules := g.Rules
+		if c == '[' {
+			rules = g.Frames
+		}
+		if _, has := rules[r.Name]; has {
+			for k, v := range r.Body {
+				rules[r.Name].Body[k] = v
+			}
+		} else {
+			rules[r.Name] = r
+		}
+	}
+	if p.next() != eof {
+		return nil, fmt.Errorf("%s : format error", p.posInfo())
+	}
+	if err := g.buildIndex(); err != nil {
+		return nil, err
+	}
+	if err := g.refine("g"); err != nil {
+		return nil, err
+	}
+	return g, nil
+}
