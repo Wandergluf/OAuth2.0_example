@@ -12,3 +12,10 @@ func (p *parser) comments() error {
 		if err != nil {
 			return err
 		}
+		if len(c) == 0 {
+			return nil
+		}
+	}
+}
+
+func (p *parser) 
