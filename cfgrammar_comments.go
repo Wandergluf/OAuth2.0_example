@@ -21,4 +21,8 @@ func (p *parser) comments() error {
 func (p *parser) comment() (string, error) {
 	if p.next() != '/' {
 		p.backup()
-		ret
+		return "", nil
+	}
+	switch r := p.peek(); {
+	case r == '/':
+		retur
