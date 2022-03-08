@@ -25,4 +25,6 @@ func (p *parser) comment() (string, error) {
 	}
 	switch r := p.peek(); {
 	case r == '/':
-		retur
+		return p.lineComment()
+	case r == '*':
+		return p.multi
