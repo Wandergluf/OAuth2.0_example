@@ -27,4 +27,6 @@ func (p *parser) comment() (string, error) {
 	case r == '/':
 		return p.lineComment()
 	case r == '*':
-		return p.multi
+		return p.multiLineComment()
+	default:
+		return "", fmt.Errorf
