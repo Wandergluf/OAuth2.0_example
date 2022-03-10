@@ -29,4 +29,8 @@ func (p *parser) comment() (string, error) {
 	case r == '*':
 		return p.multiLineComment()
 	default:
-		return "", fmt.Errorf
+		return "", fmt.Errorf("%s : invalid char %s", p.posInfo(), string(r))
+	}
+}
+
+func (p *
