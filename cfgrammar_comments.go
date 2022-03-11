@@ -39,4 +39,8 @@ func (p *parser) lineComment() (string, error) {
 	}
 	ret := []rune{'/', '/'}
 	for {
-	
+		r := p.next()
+		if r == '\n' {
+			break
+		}
+		ret = append(ret, 
