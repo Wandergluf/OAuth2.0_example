@@ -43,4 +43,9 @@ func (p *parser) lineComment() (string, error) {
 		if r == '\n' {
 			break
 		}
-		ret = append(ret, 
+		ret = append(ret, r)
+	}
+	return string(ret), nil
+}
+
+func (p *parser) mu
