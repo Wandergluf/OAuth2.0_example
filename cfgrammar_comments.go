@@ -34,4 +34,9 @@ func (p *parser) comment() (string, error) {
 }
 
 func (p *parser) lineComment() (string, error) {
-	if err := p.eat('/'); e
+	if err := p.eat('/'); err != nil {
+		return "", err
+	}
+	ret := []rune{'/', '/'}
+	for {
+	
