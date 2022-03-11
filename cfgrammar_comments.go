@@ -33,4 +33,5 @@ func (p *parser) comment() (string, error) {
 	}
 }
 
-func (p *
+func (p *parser) lineComment() (string, error) {
+	if err := p.eat('/'); e
