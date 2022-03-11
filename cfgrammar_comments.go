@@ -48,4 +48,5 @@ func (p *parser) lineComment() (string, error) {
 	return string(ret), nil
 }
 
-func (p *parser) mu
+func (p *parser) multiLineComment() (string, error) {
+	if err := p.eat('*'); err !
