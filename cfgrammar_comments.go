@@ -59,4 +59,10 @@ func (p *parser) multiLineComment() (string, error) {
 		if r == eof {
 			return "", fmt.Errorf("%s : unterminated string", p.posInfo())
 		}
-		if prev == '*' 
+		if prev == '*' && r == '/' {
+			break
+		}
+		ret = append(ret, r)
+		prev = r
+	}
+	ret = a
