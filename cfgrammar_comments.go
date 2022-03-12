@@ -49,4 +49,8 @@ func (p *parser) lineComment() (string, error) {
 }
 
 func (p *parser) multiLineComment() (string, error) {
-	if err := p.eat('*'); err !
+	if err := p.eat('*'); err != nil {
+		return "", err
+	}
+	ret := []rune{'/', '*'}
+	var
