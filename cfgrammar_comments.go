@@ -53,4 +53,8 @@ func (p *parser) multiLineComment() (string, error) {
 		return "", err
 	}
 	ret := []rune{'/', '*'}
-	var
+	var prev rune
+	for {
+		r := p.next()
+		if r == eof {
+			return "", fmt.Errorf
