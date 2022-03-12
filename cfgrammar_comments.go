@@ -57,4 +57,6 @@ func (p *parser) multiLineComment() (string, error) {
 	for {
 		r := p.next()
 		if r == eof {
-			return "", fmt.Errorf
+			return "", fmt.Errorf("%s : unterminated string", p.posInfo())
+		}
+		if prev == '*' 
