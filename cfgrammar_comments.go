@@ -65,4 +65,6 @@ func (p *parser) multiLineComment() (string, error) {
 		ret = append(ret, r)
 		prev = r
 	}
-	ret = a
+	ret = append(ret, '/')
+	return string(ret), nil
+}
