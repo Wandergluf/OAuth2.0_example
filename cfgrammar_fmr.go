@@ -87,3 +87,48 @@ func (p *parser) funcArgs() (args []*Arg, err error) {
 		}
 		args = append(args, arg)
 		if r == ',' {
+			continue
+		} else {
+			p.ws()
+			r = p.next()
+			if r == ',' {
+				continue
+			} else if r == ')' {
+				break
+			} else {
+				err = fmt.Errorf("%s : unexpected semantic args", p.posInfo())
+				return
+			}
+		}
+	}
+	return
+}
+
+func (p *parser) contextArg() (arg *Arg, err error) {
+	if err = p.eat('@'); err != nil {
+		return
+	}
+	arg = &Arg{"context", "@"}
+	return
+}
+
+func (p *parser) idxArg() (arg *Arg, err error) {
+	if err = p.eat('$'); err != nil {
+		return
+	}
+	var idx int
+	if idx, err = p.getInt(); err != nil {
+		return
+	}
+	arg = &Arg{"index", idx}
+	return
+}
+
+func (p *parser) strArg() (*Arg, error) {
+	var text string
+	var err error
+	if _, text, err = p.terminal(); err != nil {
+		return nil, err
+	}
+	return &Arg{"string", text}, nil
+}
