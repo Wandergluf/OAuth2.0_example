@@ -132,3 +132,49 @@ func (p *parser) strArg() (*Arg, error) {
 	}
 	return &Arg{"string", text}, nil
 }
+
+func (p *parser) numArg(neg bool) (*Arg, error) {
+	var ret []rune
+	hasDot := false
+	for r := p.next(); ; r = p.next() {
+		if unicode.IsDigit(r) {
+			ret = append(ret, r)
+		} else if r == '.' {
+			if hasDot {
+				return nil, fmt.Errorf("%s : unexpected dot", p.posInfo())
+			}
+			hasDot = true
+			ret = append(ret, r)
+		} else {
+			break
+		}
+	}
+	if len(ret) == 0 {
+		return nil, fmt.Errorf("%s : number expected", p.posInfo())
+	}
+	p.backup()
+	if neg {
+		ret = append([]rune{'-'}, ret...)
+	}
+	if hasDot {
+		n := new(big.Float)
+		if _, err := fmt.Sscan(string(ret), n); err != nil {
+			return nil, err
+		}
+		return &Arg{"float", n}, nil
+	}
+	n := new(big.Int)
+	if _, err := fmt.Sscan(string(ret), n); err != nil {
+		return nil, err
+	}
+	return &Arg{"int", n}, nil
+}
+
+func (p *parser) fArg() (*Arg, error) {
+	var f *FMR
+	var err error
+	if f, err = p.semanticFn(); err != nil {
+		return nil, err
+	}
+	return &Arg{"func", f}, nil
+}
