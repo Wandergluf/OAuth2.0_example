@@ -8,4 +8,9 @@ func (p *parser) special() (*Term, error) {
 	}
 	p.ws()
 	name, err := p.text()
-	if 
+	if err != nil {
+		return nil, err
+	}
+	p.ws()
+	switch name {
+	case 
