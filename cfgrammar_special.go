@@ -2,4 +2,5 @@ package fmr
 
 import "fmt"
 
-f
+func (p *parser) special() (*Term, error) {
+	if err := p.eat('('); err !=
