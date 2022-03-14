@@ -13,4 +13,8 @@ func (p *parser) special() (*Term, error) {
 	}
 	p.ws()
 	switch name {
-	case 
+	case "any":
+		return p.any()
+	case "list":
+		return p.list()
+	default:
