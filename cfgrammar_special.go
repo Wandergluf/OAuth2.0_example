@@ -29,4 +29,7 @@ func (p *parser) specialMeta() (map[string]int, error) {
 	var meta map[string]int
 	if p.peek() == '{' {
 		// contains range
-		meta = make(map[string]int
+		meta = make(map[string]int)
+		p.eat('{')
+		p.ws()
+		if meta["min"], err = p.getI
