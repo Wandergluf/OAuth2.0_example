@@ -18,3 +18,5 @@ func (p *parser) special() (*Term, error) {
 	case "list":
 		return p.list()
 	default:
+		return nil, fmt.Errorf(
+			"%s: special rule:(%s) not supported", p
