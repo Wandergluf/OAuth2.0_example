@@ -27,4 +27,6 @@ func (p *parser) specialMeta() (map[string]int, error) {
 	p.ws()
 	var err error
 	var meta map[string]int
-	if p.peek(
+	if p.peek() == '{' {
+		// contains range
+		meta = make(map[string]int
