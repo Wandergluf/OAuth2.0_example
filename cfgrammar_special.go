@@ -23,4 +23,8 @@ func (p *parser) special() (*Term, error) {
 	}
 }
 
-func (p *parser) specialMeta() (map[string]
+func (p *parser) specialMeta() (map[string]int, error) {
+	p.ws()
+	var err error
+	var meta map[string]int
+	if p.peek(
