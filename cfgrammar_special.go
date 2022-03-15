@@ -19,4 +19,8 @@ func (p *parser) special() (*Term, error) {
 		return p.list()
 	default:
 		return nil, fmt.Errorf(
-			"%s: special rule:(%s) not supported", p
+			"%s: special rule:(%s) not supported", p.posInfo(), name)
+	}
+}
+
+func (p *parser) specialMeta() (map[string]
