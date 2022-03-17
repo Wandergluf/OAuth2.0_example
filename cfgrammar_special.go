@@ -36,4 +36,6 @@ func (p *parser) specialMeta() (map[string]int, error) {
 			return nil, err
 		}
 		p.ws()
-		if 
+		if err = p.eat(','); err != nil {
+			return nil, err
+		}
