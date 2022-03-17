@@ -32,4 +32,8 @@ func (p *parser) specialMeta() (map[string]int, error) {
 		meta = make(map[string]int)
 		p.eat('{')
 		p.ws()
-		if meta["min"], err = p.getI
+		if meta["min"], err = p.getInt(); err != nil {
+			return nil, err
+		}
+		p.ws()
+		if 
