@@ -39,3 +39,6 @@ func (p *parser) specialMeta() (map[string]int, error) {
 		if err = p.eat(','); err != nil {
 			return nil, err
 		}
+		p.ws()
+		if meta["max"], err = p.getInt(); err != nil {
+			return nil, 
