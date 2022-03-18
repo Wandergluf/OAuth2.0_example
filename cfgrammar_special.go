@@ -41,4 +41,7 @@ func (p *parser) specialMeta() (map[string]int, error) {
 		}
 		p.ws()
 		if meta["max"], err = p.getInt(); err != nil {
-			return nil, 
+			return nil, err
+		}
+		if meta["max"] < meta["min"] {
+			return nil, fm
