@@ -44,4 +44,5 @@ func (p *parser) specialMeta() (map[string]int, error) {
 			return nil, err
 		}
 		if meta["max"] < meta["min"] {
-			return nil, fm
+			return nil, fmt.Errorf("%s : max:%d less than min:%d",
+				p.posInfo(
