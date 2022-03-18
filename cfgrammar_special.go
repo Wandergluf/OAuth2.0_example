@@ -48,4 +48,9 @@ func (p *parser) specialMeta() (map[string]int, error) {
 				p.posInfo(), meta["max"], meta["min"])
 		}
 		p.ws()
-		if err = p.eat('}'); er
+		if err = p.eat('}'); err != nil {
+			return nil, err
+		}
+	}
+	p.ws()
+	return meta, nil
