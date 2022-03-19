@@ -65,4 +65,7 @@ func (p *parser) list() (*Term, error) {
 	if err != nil {
 		return nil, err
 	}
-	if e
+	if err = p.eat(')'); err != nil {
+		return nil, err
+	}
+	if len(meta) 
