@@ -57,4 +57,7 @@ func (p *parser) specialMeta() (map[string]int, error) {
 }
 
 func (p *parser) list() (*Term, error) {
-	name, err := p.
+	name, err := p.nonterminal()
+	if err != nil {
+		return nil, err
+	}
