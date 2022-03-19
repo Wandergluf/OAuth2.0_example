@@ -54,3 +54,7 @@ func (p *parser) specialMeta() (map[string]int, error) {
 	}
 	p.ws()
 	return meta, nil
+}
+
+func (p *parser) list() (*Term, error) {
+	name, err := p.
