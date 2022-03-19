@@ -61,3 +61,8 @@ func (p *parser) list() (*Term, error) {
 	if err != nil {
 		return nil, err
 	}
+	meta, err := p.specialMeta()
+	if err != nil {
+		return nil, err
+	}
+	if e
