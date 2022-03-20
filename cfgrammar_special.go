@@ -80,3 +80,7 @@ func (p *parser) any() (*Term, error) {
 		return nil, err
 	}
 	if err = p.eat(')'); err != nil {
+		return nil, err
+	}
+	if len(meta) > 0 {
+		return &Term{Valu
