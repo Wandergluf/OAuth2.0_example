@@ -69,4 +69,9 @@ func (p *parser) list() (*Term, error) {
 		return nil, err
 	}
 	if len(meta) > 0 {
-		return &Term{Type: List, Value: name, M
+		return &Term{Type: List, Value: name, Meta: meta}, nil
+	}
+	return &Term{Type: List, Value: name}, nil
+}
+
+fun
