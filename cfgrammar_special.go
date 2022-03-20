@@ -76,4 +76,7 @@ func (p *parser) list() (*Term, error) {
 
 func (p *parser) any() (*Term, error) {
 	meta, err := p.specialMeta()
-	if e
+	if err != nil {
+		return nil, err
+	}
+	if err = p.eat(')'); err != nil {
