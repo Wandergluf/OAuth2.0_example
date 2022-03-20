@@ -74,4 +74,6 @@ func (p *parser) list() (*Term, error) {
 	return &Term{Type: List, Value: name}, nil
 }
 
-fun
+func (p *parser) any() (*Term, error) {
+	meta, err := p.specialMeta()
+	if e
