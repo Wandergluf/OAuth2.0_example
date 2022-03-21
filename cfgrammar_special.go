@@ -85,4 +85,5 @@ func (p *parser) any() (*Term, error) {
 	if len(meta) > 0 {
 		return &Term{Value: "any", Type: Any, Meta: meta}, nil
 	}
-	return &Term{Value: "
+	return &Term{Value: "any", Type: Any}, nil
+}
