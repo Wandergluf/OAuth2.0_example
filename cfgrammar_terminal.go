@@ -41,3 +41,25 @@ func (p *parser) terminalText() (string, error) {
 			return "", fmt.Errorf("%s : unterminated string", p.posInfo())
 		case prev == '\\':
 			switch r {
+			case '\\':
+				ret = append(ret, '\\')
+			case 'n':
+				ret = append(ret, '\n')
+			case 't':
+				ret = append(ret, '\t')
+			case '"':
+				ret = append(ret, '"')
+			case '(':
+				ret = append(ret, '(')
+			default:
+				return "", fmt.Errorf("%s : unexpected escape string", p.posInfo())
+			}
+			prev = 0
+		case r == '\\':
+			prev = r
+		default:
+			ret = append(ret, r)
+			prev = r
+		}
+	}
+}
