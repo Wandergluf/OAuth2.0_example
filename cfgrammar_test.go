@@ -8,4 +8,5 @@ import (
 )
 
 var tests = []string{
-	`<list>  =  "<" <i
+	`<list>  =  "<" <items> ">"               ;
+	<items> =  <items> " " <item> {     nf.math.sum($1,$3
