@@ -18,4 +18,6 @@ var tests = []string{
 	`,
 }
 
-func 
+func TestLex(t *testing.T) {
+	for _, c := range tests {
+		g, err := G
