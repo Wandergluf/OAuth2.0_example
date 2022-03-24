@@ -20,4 +20,8 @@ var tests = []string{
 
 func TestLex(t *testing.T) {
 	for _, c := range tests {
-		g, err := G
+		g, err := GrammarFromString(c, "test")
+		if err != nil {
+			t.Error(err)
+		}
+		
