@@ -25,4 +25,9 @@ func TestLex(t *testing.T) {
 			t.Error(err)
 		}
 		b, err := goutil.JSONMarshalIndent(g, "", "  ")
-		if err !
+		if err != nil {
+			t.Error(err)
+		}
+		t.Log(string(b))
+	}
+}
