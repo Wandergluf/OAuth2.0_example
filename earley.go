@@ -79,3 +79,64 @@ func (s *TableState) isCompleted() bool {
 				}
 			}
 		} else if s.Dot > 0 {
+			return true
+		}
+		return false
+	default:
+		return s.Dot >= len(s.Rb.Terms)
+	}
+}
+
+func (s *TableState) getNextTerm() *Term {
+	switch s.Term.Type {
+	case Any:
+		if !s.metaEmpty() {
+			if meta, ok := s.Term.Meta.(map[string]int); ok && s.Dot >= meta["max"] {
+				return nil
+			}
+		}
+		return s.Term
+	case List:
+		if !s.metaEmpty() {
+			if meta, ok := s.Term.Meta.(map[string]int); ok && s.Dot >= meta["max"] {
+				return nil
+			}
+		}
+		return &Term{Value: s.Term.Value, Type: Nonterminal, Meta: s.Term.Meta}
+	default:
+		if s.isCompleted() {
+			return nil
+		}
+		return s.Rb.Terms[s.Dot]
+	}
+}
+
+func (col *TableColumn) insert(state *TableState) *TableState {
+	return col.insertToEnd(state, false)
+}
+
+func (col *TableColumn) insertToEnd(state *TableState, end bool) *TableState {
+	state.End = col.index
+	if state.Term.Type == Any {
+		state.Dot = state.End - state.Start
+	}
+	for i, s := range col.states {
+		if s.Equal(state) {
+			if end {
+				col.states = append(col.states[:i], col.states[i+1:]...)
+				col.states = append(col.states, s)
+			}
+			return s
+		}
+	}
+	col.states = append(col.states, state)
+	return col.states[len(col.states)-1]
+}
+
+/*
+ * the Earley algorithm's core: add gamma rule, fill up table, and check if the
+ * gamma rule span from the first column to the last one. return the final gamma
+ * state, or null, if the parse failed.
+ */
+func (p *Parse) parse(maxFlag bool) []*TableState {
+	if len(p.starts) == 0 {
