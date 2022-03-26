@@ -140,3 +140,65 @@ func (col *TableColumn) insertToEnd(state *TableState, end bool) *TableState {
  */
 func (p *Parse) parse(maxFlag bool) []*TableState {
 	if len(p.starts) == 0 {
+		return nil
+	}
+	for _, start := range p.starts {
+		rb := &RuleBody{
+			[]*Term{{Value: start, Type: Nonterminal}},
+			&FMR{"nf.I", []*Arg{{"index", 1}}},
+		}
+		begin := &TableState{&Term{GammaRule, Nonterminal, nil}, rb, 0, 0, 0}
+		p.columns[0].states = append(p.columns[0].states, begin)
+	}
+	for i, col := range p.columns {
+		if Debug {
+			fmt.Printf("Column %d[%s]:", i, col.token)
+		}
+		for j := 0; j < len(col.states); j++ {
+			st := col.states[j]
+			if Debug {
+				fmt.Printf("\n\tRow %d: %+v, len:%d\n", j, st, len(col.states))
+			}
+			if st.isCompleted() {
+				p.complete(col, st)
+			}
+			term := st.getNextTerm()
+			if term != nil {
+				if st.Term.Type == Any {
+					if i+1 < len(p.columns) {
+						p.scan(p.columns[i+1], st, term)
+					}
+				} else {
+					switch term.Type {
+					case Nonterminal, Any, List:
+						p.predict(col, term)
+					case Terminal:
+						if i+1 < len(p.columns) {
+							p.scan(p.columns[i+1], st, term)
+						}
+					}
+				}
+			}
+		}
+		if Debug {
+			fmt.Println()
+		}
+		//p.handleEpsilons(col)
+	}
+
+	// find end state (return nil if not found)
+	/*
+		lastCol := p.columns[len(p.columns)-1]
+		for _, state := range lastCol.states {
+			if state.Name == GAMMA_RULE && state.isCompleted() {
+				return state
+			}
+		}
+	*/
+	var ret []*TableState
+	for i := len(p.columns) - 1; i >= 0; i-- {
+		for _, state := range p.columns[i].states {
+			if state.Term.Value == GammaRule && state.isCompleted() {
+				ret = append(ret, state)
+				if maxFlag {
+					p.finalStates = ret
