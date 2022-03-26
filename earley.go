@@ -202,3 +202,60 @@ func (p *Parse) parse(maxFlag bool) []*TableState {
 				ret = append(ret, state)
 				if maxFlag {
 					p.finalStates = ret
+					return ret
+				}
+			}
+		}
+	}
+	p.finalStates = ret
+	return ret
+}
+
+func (*Parse) scan(col *TableColumn, st *TableState, term *Term) {
+	if term.Type == Any {
+		newSt := &TableState{Term: &Term{"any", Any, term.Meta}, Rb: st.Rb,
+			Dot: st.Dot + 1, Start: st.Start}
+		col.insert(newSt)
+		if Debug {
+			fmt.Println("\tscan Any")
+			fmt.Printf("\t\tinsert to next: %+v\n", newSt)
+		}
+		return
+	}
+	if terminalMatch(term, col.token) {
+		newSt := &TableState{Term: st.Term, Rb: st.Rb,
+			Dot: st.Dot + 1, Start: st.Start}
+		col.insert(newSt)
+		if Debug {
+			fmt.Println("\tscan", term.Value, col.token)
+			fmt.Printf("\t\tinsert to next: %+v\n", newSt)
+		}
+	}
+}
+
+func predict(g *Grammar, col *TableColumn, term *Term) bool {
+	r, has := g.Rules[term.Value]
+	if !has {
+		return false
+	}
+	changed := false
+	for _, prod := range r.Body {
+		//st := &TableState{Name: r.Name, Rb: prod, dot: 0, Start: col.index, termType: term.Type}
+		st := &TableState{Term: &Term{Value: r.Name, Type: Nonterminal}, Rb: prod,
+			Dot: 0, Start: col.index}
+		st2 := col.insert(st)
+		if Debug {
+			fmt.Printf("\t\t%+v insert: %+v\n", term.Type, st)
+		}
+		changed = changed || (st == st2)
+	}
+	return changed
+}
+
+func (p *Parse) predict(col *TableColumn, term *Term) bool {
+	if Debug {
+		fmt.Println("\tpredict", term.Type, term.Value)
+	}
+	switch term.Type {
+	case Nonterminal:
+		changed := false
