@@ -259,3 +259,59 @@ func (p *Parse) predict(col *TableColumn, term *Term) bool {
 	switch term.Type {
 	case Nonterminal:
 		changed := false
+		for _, g := range p.grammars {
+			changed = predict(g, col, term) || changed
+		}
+		return changed
+	case Any, List:
+		st := &TableState{Term: term, Start: col.index}
+		st2 := col.insert(st)
+		if Debug {
+			fmt.Printf("\t\tinsert: %+v\n", st)
+		}
+		return st == st2
+	}
+	return false
+}
+
+// Earley complete. returns true if the table has been changed, false otherwise
+func (p *Parse) complete(col *TableColumn, state *TableState) bool {
+	if Debug {
+		fmt.Printf("\tcomplete: %+v\n", state)
+	}
+	changed := false
+	for _, st := range p.columns[state.Start].states {
+		next := st.getNextTerm()
+		if next == nil {
+			continue
+		}
+		if (next.Type == Any && state.Term.Type == Any) ||
+			(next.Type == state.Term.Type && next.Value == state.Term.Value) {
+			st1 := &TableState{Term: &Term{st.Term.Value, st.Term.Type, next.Meta},
+				Rb: st.Rb, Dot: st.Dot + 1, Start: st.Start}
+			//st2 := col.insertToEnd(st1, true)
+			st2 := col.insertToEnd(st1, false)
+			if Debug {
+				fmt.Printf("\t\tinsert: %+v\n", st1)
+			}
+			changed = changed || (st1 == st2)
+		}
+	}
+	return changed
+}
+
+func (p *Parse) handleEpsilons(col *TableColumn) {
+	changed := true
+	for changed {
+		changed = false
+		for _, state := range col.states {
+			if state.isCompleted() {
+				changed = p.complete(col, state) || changed
+			}
+			term := state.getNextTerm()
+			if term != nil && term.Type == Nonterminal {
+				changed = p.predict(col, term) || changed
+			}
+		}
+	}
+}
