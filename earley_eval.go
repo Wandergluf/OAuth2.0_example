@@ -6,4 +6,5 @@ import (
 )
 
 // Eval returns the denotation of Node n
-func
+func (n *Node) Eval() (interface{}, error) {
+	if n.Value.Rb == nil |
