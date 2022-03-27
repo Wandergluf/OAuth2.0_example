@@ -124,3 +124,33 @@ func (p *Parse) buildTreesHelper(children *[]*Node, state *TableState,
 			// comes after it X in chronological order
 			if Debug {
 				fmt.Println("st==state", st, state)
+				fmt.Println(p.columns[end])
+			}
+			break
+		}
+		if !st.isCompleted() || st.Term.Value != term.Value || st.Term.Type != term.Type {
+			// this state is out of the question -- either not completed or does not
+			// match the name
+			continue
+		}
+		if start != -1 && st.Start != start {
+			// if start isn't nil, this state must span from start to end
+			continue
+		}
+		if Debug {
+			fmt.Printf("\tY st:%+v, term:%+v\n", st, term)
+		}
+
+		// okay, so `st` matches -- now we need to create a tree for every possible
+		// sub-match
+		for _, subTree := range p.buildTrees(st) {
+			cld := []*Node{subTree}
+			cld = append(cld, *children...)
+			// now try all options
+			for _, node := range p.buildTreesHelper(&cld, state, termIndex-1, st.Start) {
+				outputs = append(outputs, node)
+			}
+		}
+	}
+	return outputs
+}
