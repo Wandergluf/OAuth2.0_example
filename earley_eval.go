@@ -13,4 +13,7 @@ func (n *Node) Eval() (interface{}, error) {
 		}
 		return n.OriginalText(), nil
 	}
-	return n.fmrEval(n.Value.Rb.F
+	return n.fmrEval(n.Value.Rb.F, n.Children)
+}
+
+func (n *Node) fmrEval(f *FMR, children []*Node) 
