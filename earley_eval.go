@@ -16,4 +16,8 @@ func (n *Node) Eval() (interface{}, error) {
 	return n.fmrEval(n.Value.Rb.F, n.Children)
 }
 
-func (n *Node) fmrEval(f *FMR, children []*Node) 
+func (n *Node) fmrEval(f *FMR, children []*Node) (interface{}, error) {
+	if f == nil {
+		return "", nil
+	}
+	if f.Fn == "
