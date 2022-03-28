@@ -10,4 +10,7 @@ func (n *Node) Eval() (interface{}, error) {
 	if n.Value.Rb == nil || n.Value.Rb.F == nil {
 		if n.p == nil {
 			return "", nil
-	
+		}
+		return n.OriginalText(), nil
+	}
+	return n.fmrEval(n.Value.Rb.F
