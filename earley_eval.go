@@ -24,4 +24,7 @@ func (n *Node) fmrEval(f *FMR, children []*Node) (interface{}, error) {
 		if len(f.Args) != 1 {
 			return "", fmt.Errorf("the length of Args of nf.I should be one")
 		}
-		s, err := n.semEval(f.Args[0], c
+		s, err := n.semEval(f.Args[0], children)
+		if err != nil {
+			return "", err
+		}
