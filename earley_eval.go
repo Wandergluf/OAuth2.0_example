@@ -28,3 +28,8 @@ func (n *Node) fmrEval(f *FMR, children []*Node) (interface{}, error) {
 		if err != nil {
 			return "", err
 		}
+		return s, nil
+	}
+
+	var args []interface{}
+	for _, arg := range f.Args {
