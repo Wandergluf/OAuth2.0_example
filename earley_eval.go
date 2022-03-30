@@ -33,3 +33,6 @@ func (n *Node) fmrEval(f *FMR, children []*Node) (interface{}, error) {
 
 	var args []interface{}
 	for _, arg := range f.Args {
+		s, err := n.semEval(arg, children)
+		if err != nil {
+			r
