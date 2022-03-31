@@ -40,4 +40,6 @@ func (n *Node) fmrEval(f *FMR, children []*Node) (interface{}, error) {
 		args = append(args, s)
 	}
 	if Debug {
-		fmt.Pri
+		fmt.Printf("funcs.Call(%s, %+v)\n", f.Fn, args)
+	}
+	return Call
