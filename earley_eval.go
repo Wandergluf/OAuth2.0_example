@@ -42,4 +42,7 @@ func (n *Node) fmrEval(f *FMR, children []*Node) (interface{}, error) {
 	if Debug {
 		fmt.Printf("funcs.Call(%s, %+v)\n", f.Fn, args)
 	}
-	return Call
+	return Call(f.Fn, args...)
+}
+
+func (n *Node) semEval(arg *Arg, nodes [
