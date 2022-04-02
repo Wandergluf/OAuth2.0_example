@@ -45,4 +45,5 @@ func (n *Node) fmrEval(f *FMR, children []*Node) (interface{}, error) {
 	return Call(f.Fn, args...)
 }
 
-func (n *Node) semEval(arg *Arg, nodes [
+func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
+	if arg == nil {
