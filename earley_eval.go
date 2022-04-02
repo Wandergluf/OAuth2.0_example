@@ -47,3 +47,7 @@ func (n *Node) fmrEval(f *FMR, children []*Node) (interface{}, error) {
 
 func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 	if arg == nil {
+		return "", fmt.Errorf("arg is nil")
+	}
+	switch arg.Type {
+	
