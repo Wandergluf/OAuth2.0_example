@@ -50,4 +50,6 @@ func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 		return "", fmt.Errorf("arg is nil")
 	}
 	switch arg.Type {
-	
+	case "string":
+		if s, ok := arg.Value.(string); ok {
+			
