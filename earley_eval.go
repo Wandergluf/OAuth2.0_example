@@ -54,4 +54,6 @@ func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 		if s, ok := arg.Value.(string); ok {
 			return s, nil
 		}
-		return "", fmt.Errorf("arg.Value: %+v is not s
+		return "", fmt.Errorf("arg.Value: %+v is not string", arg.Value)
+	case "int":
+		if i, ok := arg.Val
