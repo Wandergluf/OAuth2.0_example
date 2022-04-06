@@ -64,4 +64,6 @@ func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 		if f, ok := arg.Value.(*big.Float); ok {
 			return f.String(), nil
 		}
-		return "", fmt.Errorf("arg.Value: %+v
+		return "", fmt.Errorf("arg.Value: %+v is not float", arg.Value)
+	case "func":
+		if fmr, ok := arg.Value.(*FMR); ok {
