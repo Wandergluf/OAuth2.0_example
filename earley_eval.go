@@ -69,4 +69,6 @@ func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 		if fmr, ok := arg.Value.(*FMR); ok {
 			return n.fmrEval(fmr, nodes)
 		}
-		return "", fm
+		return "", fmt.Errorf("arg.Value: %+v is not func", arg.Value)
+	case "index":
+	
