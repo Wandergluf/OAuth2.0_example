@@ -76,4 +76,9 @@ func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 			return "", fmt.Errorf("arg.Value: %+v is not index", arg.Value)
 		}
 		if i < 0 || i > len(nodes) {
-			return "", fmt.Errorf("i=%d not in range [0, %d]"
+			return "", fmt.Errorf("i=%d not in range [0, %d]", i, len(nodes))
+		}
+		if i == 0 {
+			return n.NL(), nil
+		}
+		s, err :
