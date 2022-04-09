@@ -81,4 +81,6 @@ func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 		if i == 0 {
 			return n.NL(), nil
 		}
-		s, err :
+		s, err := nodes[i-1].Eval()
+		if err != nil {
+			return "", 
