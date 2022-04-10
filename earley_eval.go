@@ -87,4 +87,6 @@ func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 		}
 		return s, nil
 	case "context":
-		subnodes := [
+		subnodes := []map[string]interface{}{}
+		for _, node := range nodes {
+			ni,
