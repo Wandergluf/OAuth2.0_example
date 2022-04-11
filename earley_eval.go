@@ -98,4 +98,7 @@ func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 		ret := map[string]interface{}{
 			"text":  n.OriginalText(),
 			"pos":   n.Pos(),
-			"nodes":
+			"nodes": subnodes,
+		}
+		if n.Term().Type != Terminal {
+			ret["type"] 
