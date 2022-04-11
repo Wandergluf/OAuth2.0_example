@@ -92,4 +92,5 @@ func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 			ni, err := node.Eval()
 			if err != nil {
 				ni = node.OriginalText()
-		
+			}
+			subnodes = append(subnodes, map[string]interface{}
