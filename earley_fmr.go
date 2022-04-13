@@ -69,3 +69,49 @@ func (n *Node) semStr(arg *Arg, nodes []*Node, nl string) (string, error) {
 		}
 		return "", fmt.Errorf("arg.Value: %+v is not float", arg.Value)
 	case "func":
+		if fmr, ok := arg.Value.(*FMR); ok {
+			return n.fmrStr(fmr, nodes, nl)
+		}
+		return "", fmt.Errorf("arg.Value: %+v is not func", arg.Value)
+	case "index":
+		i, ok := arg.Value.(int)
+		if !ok {
+			return "", fmt.Errorf("arg.Value: %+v is not index", arg.Value)
+		}
+		if i < 0 || i > len(nodes) {
+			return "", fmt.Errorf("i=%d not in range [0, %d]", i, len(nodes))
+		}
+		if i == 0 {
+			return nl, nil
+		}
+		if nodes[i-1] == nil {
+			return "null", nil
+		}
+		s, err := nodes[i-1].Semantic()
+		if err != nil {
+			return "", err
+		}
+		return s, nil
+	case "context":
+		subnodes := []map[string]interface{}{}
+		for _, node := range nodes {
+			ni, err := node.Eval()
+			if err != nil {
+				ni = node.OriginalText()
+			}
+			subnodes = append(subnodes, map[string]interface{}{node.Term().Value: ni})
+		}
+		ret := map[string]interface{}{
+			"text":  n.OriginalText(),
+			"pos":   n.Pos(),
+			"nodes": subnodes,
+		}
+		if n.Term().Type != Terminal {
+			ret["type"] = n.Term().Value
+		}
+		s, _ := json.Marshal(ret)
+		return string(s), nil
+	default:
+		return "", fmt.Errorf("arg.Type: %s invalid", arg.Type)
+	}
+}
