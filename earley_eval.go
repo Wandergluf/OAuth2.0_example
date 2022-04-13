@@ -101,4 +101,8 @@ func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 			"nodes": subnodes,
 		}
 		if n.Term().Type != Terminal {
-			ret["type"] 
+			ret["type"] = n.Term().Value
+		}
+		return ret, nil
+	default:
+		retu
