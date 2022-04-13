@@ -105,4 +105,6 @@ func (n *Node) semEval(arg *Arg, nodes []*Node) (interface{}, error) {
 		}
 		return ret, nil
 	default:
-		retu
+		return "", fmt.Errorf("arg.Type: %s invalid", arg.Type)
+	}
+}
