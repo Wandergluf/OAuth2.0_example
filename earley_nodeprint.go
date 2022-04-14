@@ -14,3 +14,5 @@ func (n *Node) TreePrint() {
 	for _, child := range n.Children {
 		tree.AddNode(child.Value)
 	}
+	fmt.Println(tree.String())
+}
