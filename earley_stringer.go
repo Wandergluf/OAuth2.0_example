@@ -117,3 +117,32 @@ func (f *FMR) String() string {
 				return invalid
 			}
 		case "int":
+			if i, ok := arg.Value.(*big.Int); ok {
+				args = append(args, i.String())
+			} else {
+				return invalid
+			}
+		case "float":
+			if f, ok := arg.Value.(*big.Float); ok {
+				args = append(args, f.String())
+			} else {
+				return invalid
+			}
+		case "func":
+			if fmr, ok := arg.Value.(*FMR); ok {
+				args = append(args, fmr.String())
+			} else {
+				return invalid
+			}
+		case "index":
+			if i, ok := arg.Value.(int); ok {
+				args = append(args, fmt.Sprintf("$%d", i))
+			} else {
+				return invalid
+			}
+		default:
+			return invalid
+		}
+	}
+	return fmt.Sprintf("%s(%s)", f.Fn, strings.Join(args, ","))
+}
