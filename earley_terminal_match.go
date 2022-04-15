@@ -12,4 +12,8 @@ func terminalMatch(term *Term, token *ling.Token) bool {
 	}
 	t := gTokens.get(term.Value)
 	if term.Meta == nil || t == nil {
-		if term.Valu
+		if term.Value == token.Text {
+			return true
+		}
+	} else {
+		flags, _ := term.Meta.(str
