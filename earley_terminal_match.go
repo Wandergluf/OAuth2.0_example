@@ -7,4 +7,7 @@ import (
 )
 
 func terminalMatch(term *Term, token *ling.Token) bool {
-	if term == nil || token == nil || term.Ty
+	if term == nil || token == nil || term.Type != Terminal {
+		return false
+	}
+	t := gTokens.ge
