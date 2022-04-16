@@ -16,4 +16,7 @@ func terminalMatch(term *Term, token *ling.Token) bool {
 			return true
 		}
 	} else {
-		flags, _ := term.Meta.(str
+		flags, _ := term.Meta.(string)
+		switch {
+		case strings.Contains(flags, "l"):
+			if 
