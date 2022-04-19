@@ -20,4 +20,7 @@ func terminalMatch(term *Term, token *ling.Token) bool {
 		switch {
 		case strings.Contains(flags, "l"):
 			if t.Annotations[ling.Lemma] == token.Annotations[ling.Lemma] {
-				re
+				return true
+			}
+		case strings.Contains(flags, "i"):
+			if st
