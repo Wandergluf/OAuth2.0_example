@@ -24,4 +24,5 @@ func terminalMatch(term *Term, token *ling.Token) bool {
 			}
 		case strings.Contains(flags, "i"):
 			if strings.ToLower(t.Annotations[ling.Norm]) ==
-				strings.To
+				strings.ToLower(token.Annotations[ling.Norm]) {
+				return 
