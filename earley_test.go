@@ -8,4 +8,5 @@ import (
 )
 
 func TestEarleyParse(t *testing.T) {
-	var grammar = `<expr> =
+	var grammar = `<expr> = "a" | "a" "+" <expr> {nf.math.sum($1, $3)};`
+	//grammar = `<ex
