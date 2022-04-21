@@ -14,4 +14,6 @@ func TestEarleyParse(t *testing.T) {
 		"a",
 		"a + a",
 		//"a + a + a",
-		//"a + a
+		//"a + a + a + a",
+		//"a + a + a + a + a",
+		//"a + a + a + a + a + a"
