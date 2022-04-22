@@ -20,4 +20,6 @@ func TestEarleyParse(t *testing.T) {
 		//"a + a + a + a + a + a + a",
 		"+ a",
 	}
-	g, err := Gramma
+	g, err := GrammarFromString(grammar, "a")
+	if err != nil {
+		t.Error(
