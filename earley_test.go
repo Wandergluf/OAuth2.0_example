@@ -22,4 +22,6 @@ func TestEarleyParse(t *testing.T) {
 	}
 	g, err := GrammarFromString(grammar, "a")
 	if err != nil {
-		t.Error(
+		t.Error(err)
+	}
+	_, err = goutil.JSONMarshalIndent(g, "", " ")
