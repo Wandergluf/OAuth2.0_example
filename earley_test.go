@@ -29,4 +29,5 @@ func TestEarleyParse(t *testing.T) {
 		t.Error(err)
 	}
 	//fmt.Println(string(b))
-	fo
+	for _, text := range strs {
+		p, err := g.EarleyParse(text, "expr"
