@@ -36,4 +36,5 @@ func TestEarleyParse(t *testing.T) {
 		}
 		t.Logf("%+v\n", p)
 		for _, finalState := range p.finalStates {
-			trees :
+			trees := p.GetTrees(finalState)
+			t.Log("tree number:", len(trees))
