@@ -40,4 +40,7 @@ func TestEarleyParse(t *testing.T) {
 			t.Log("tree number:", len(trees))
 			for _, tree := range trees {
 				var buf bytes.Buffer
+				tree.Print(&buf)
+				t.Log(buf.String())
+				tree.TreePrint()
 				
