@@ -43,4 +43,5 @@ func TestEarleyParse(t *testing.T) {
 				tree.Print(&buf)
 				t.Log(buf.String())
 				tree.TreePrint()
-				
+				b, err := goutil.JSONMarshalIndent(tree, "", " ")
+			
