@@ -47,4 +47,8 @@ func TestEarleyParse(t *testing.T) {
 				if err != nil {
 					t.Error(err)
 				}
-				t.Logf("%+v"
+				t.Logf("%+v", string(b))
+			}
+		}
+	}
+}
