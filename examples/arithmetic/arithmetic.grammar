@@ -1,1 +1,3 @@
-<number> = "one"    {nf.I(1
+<number> = "one"    {nf.I(1)}
+         | "two"    {nf.I(2)}
+         | "three"  {nf.
