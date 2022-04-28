@@ -5,4 +5,6 @@
          | "five"   {nf.I(5)}
          | "six"    {nf.I(6)}
          | "seven"  {nf.I(7)}
-         |
+         | "eight"  {nf.I(8)}
+         | "nine"   {nf.I(9)}
+         | "ten"    {n
