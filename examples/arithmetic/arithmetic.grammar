@@ -3,4 +3,6 @@
          | "three"  {nf.I(3)}
          | "four"   {nf.I(4)}
          | "five"   {nf.I(5)}
- 
+         | "six"    {nf.I(6)}
+         | "seven"  {nf.I(7)}
+         |
