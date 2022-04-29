@@ -7,4 +7,6 @@
          | "seven"  {nf.I(7)}
          | "eight"  {nf.I(8)}
          | "nine"   {nf.I(9)}
-         | "ten"    {n
+         | "ten"    {nf.I(10)}
+         | "一"     {nf.I(1)}
+         | "二"     {nf.I
