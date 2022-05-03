@@ -24,4 +24,5 @@
          | <number> "add" <number>          {nf.math.sum($1, $3)}
          | <number> "加" <number>           {nf.math.sum($1, $3)}
          | <number> "times" <number>        {nf.math.mul($1, $3)}
-         | <number> "multiply by" <nu
+         | <number> "multiply by" <number>  {nf.math.mul($1, $3)}
+         | <number> "乘" <number>     
