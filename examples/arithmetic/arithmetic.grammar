@@ -27,4 +27,5 @@
          | <number> "multiply by" <number>  {nf.math.mul($1, $3)}
          | <number> "乘" <number>           {nf.math.mul($1, $3)}
          | "minus" <number>                 {nf.math.neg($2)}
-         | "负" <number>               
+         | "负" <number>                    {nf.math.neg($2)};
+
