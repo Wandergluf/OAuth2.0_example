@@ -1,2 +1,5 @@
 var nf = nf || {};
-nf.ma
+nf.math = {};
+
+nf.math.sum = function(x, y) {
+    //console.log(typeof(x),
