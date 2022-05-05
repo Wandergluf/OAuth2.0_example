@@ -51,3 +51,37 @@ func main() {
 
 	for {
 		line, c := br.ReadString('\n')
+		if c == io.EOF {
+			break
+		}
+		if c != nil {
+			glog.Fatal(c)
+		}
+		fmt.Println(line)
+		//p, err := g.EarleyParse("number", line)
+		ps, err := g.EarleyParseMaxAll(line, "number")
+		if err != nil {
+			glog.Fatal(err)
+		}
+		for i, p := range ps {
+			for _, f := range p.GetFinalStates() {
+				trees := p.GetTrees(f)
+				//fmt.Printf("%+v\n", p)
+				fmt.Printf("p%d tree number:%d\n", i, len(trees))
+				for _, tree := range trees {
+					//tree.Print(os.Stdout)
+					sem, err := tree.Semantic()
+					if err != nil {
+						glog.Fatal(err)
+					}
+					result, err := vm.Run(sem)
+					if err != nil {
+						glog.Fatal(err)
+					}
+					fmt.Printf("%s = %v\n", sem, result)
+				}
+			}
+		}
+		fmt.Println()
+	}
+}
