@@ -6,3 +6,7 @@ nf.math.sum = function(x, y) {
     //console.log(x, y);
     return x + y;
 };
+nf.math.sub = function(x, y) {
+    return x - y;
+}
+nf.m
