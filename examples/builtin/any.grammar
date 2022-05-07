@@ -1,1 +1,2 @@
-<company> = <location> (any) "有限公司"  
+<company> = <location> (any) "有限公司"                {nf.company($1,$2,$3)}
+          | <location> (
