@@ -16,4 +16,5 @@ nf.math.neg = function(x) {
     return -x;
 }
 
-//console.log(nf.math.sum(1,
+//console.log(nf.math.sum(1,1));
+
