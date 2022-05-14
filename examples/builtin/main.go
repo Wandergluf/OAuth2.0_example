@@ -5,4 +5,9 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/iou
+	"io/ioutil"
+	"os"
+	"strings"
+
+	"github.com/golang/glog"
+	"github.co
