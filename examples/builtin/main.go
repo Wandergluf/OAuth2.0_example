@@ -12,4 +12,8 @@ import (
 	"github.com/golang/glog"
 	"github.com/liuzl/fmr"
 	"github.com/robertkrimen/otto"
-	"zliu.org/go
+	"zliu.org/goutil"
+)
+
+var (
+	grammar = flag.String("g", "builtin.gramm
