@@ -16,4 +16,5 @@ import (
 )
 
 var (
-	grammar = flag.String("g", "builtin.gramm
+	grammar = flag.String("g", "builtin.grammar", "grammar file")
+	js      = flag.String("js", "math
