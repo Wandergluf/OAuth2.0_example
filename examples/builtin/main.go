@@ -19,4 +19,5 @@ var (
 	grammar = flag.String("g", "builtin.grammar", "grammar file")
 	js      = flag.String("js", "math.js", "javascript file")
 	input   = flag.String("i", "", "file of original text to read")
-	debug   = flag.Bool("
+	debug   = flag.Bool("debug", false, "debug mode")
+	start   = flag.String("start", "n
