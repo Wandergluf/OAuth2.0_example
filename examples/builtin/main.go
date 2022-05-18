@@ -20,4 +20,9 @@ var (
 	js      = flag.String("js", "math.js", "javascript file")
 	input   = flag.String("i", "", "file of original text to read")
 	debug   = flag.Bool("debug", false, "debug mode")
-	start   = flag.String("start", "n
+	start   = flag.String("start", "number", "start rule")
+)
+
+func main() {
+	defer func() {
+		if err := r
