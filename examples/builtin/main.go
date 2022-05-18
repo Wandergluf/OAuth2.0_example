@@ -25,4 +25,8 @@ var (
 
 func main() {
 	defer func() {
-		if err := r
+		if err := recover(); err != nil {
+			fmt.Println(err)
+		}
+	}()
+	
