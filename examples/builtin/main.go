@@ -29,4 +29,8 @@ func main() {
 			fmt.Println(err)
 		}
 	}()
-	
+	flag.Parse()
+	if *debug {
+		fmr.Debug = true
+	}
+	g, err := fmr
