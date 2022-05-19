@@ -33,4 +33,7 @@ func main() {
 	if *debug {
 		fmr.Debug = true
 	}
-	g, err := fmr
+	g, err := fmr.GrammarFromFile(*grammar)
+	if err != nil {
+		glog.Fatal(err)
+	
