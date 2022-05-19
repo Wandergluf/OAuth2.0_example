@@ -40,4 +40,8 @@ func main() {
 	if *debug {
 		b, err := goutil.JSONMarshalIndent(g, "", "    ")
 		if err != nil {
-			glog.Fatal(e
+			glog.Fatal(err)
+		}
+		fmt.Printf("%s\n", string(b))
+	}
+	script, err :
