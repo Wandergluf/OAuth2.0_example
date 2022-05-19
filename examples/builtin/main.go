@@ -36,4 +36,6 @@ func main() {
 	g, err := fmr.GrammarFromFile(*grammar)
 	if err != nil {
 		glog.Fatal(err)
-	
+	}
+	if *debug {
+		b, err := goutil.JSONMarshalIndent
