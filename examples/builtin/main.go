@@ -44,4 +44,8 @@ func main() {
 		}
 		fmt.Printf("%s\n", string(b))
 	}
-	script, err :
+	script, err := ioutil.ReadFile(*js)
+	if err != nil {
+		glog.Fatal(err)
+	}
+	vm := ot
