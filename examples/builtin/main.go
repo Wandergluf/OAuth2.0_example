@@ -48,4 +48,6 @@ func main() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	vm := ot
+	vm := otto.New()
+	if _, err = vm.Run(script); err != nil {
+		glog
