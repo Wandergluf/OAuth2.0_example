@@ -56,4 +56,8 @@ func main() {
 	var in *os.File
 	if *input == "" {
 		in = os.Stdin
-	} else
+	} else {
+		in, err = os.Open(*input)
+		if err != nil {
+			glog.Fatal(err)
+		}
