@@ -50,4 +50,10 @@ func main() {
 	}
 	vm := otto.New()
 	if _, err = vm.Run(script); err != nil {
-		glog
+		glog.Fatal(err)
+	}
+
+	var in *os.File
+	if *input == "" {
+		in = os.Stdin
+	} else
