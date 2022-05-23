@@ -63,4 +63,8 @@ func main() {
 		}
 		defer in.Close()
 	}
-	br := bufio.NewReader
+	br := bufio.NewReader(in)
+
+	for {
+		line, c := br.ReadString('\n')
+		if 
