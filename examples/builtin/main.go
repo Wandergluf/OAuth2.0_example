@@ -61,3 +61,6 @@ func main() {
 		if err != nil {
 			glog.Fatal(err)
 		}
+		defer in.Close()
+	}
+	br := bufio.NewReader
