@@ -71,4 +71,7 @@ func main() {
 			break
 		}
 		if c != nil {
-			glog.Fatal(c
+			glog.Fatal(c)
+		}
+		line = strings.TrimSpace(line)
+		fmt.Println(line)
