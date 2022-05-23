@@ -67,4 +67,8 @@ func main() {
 
 	for {
 		line, c := br.ReadString('\n')
-		if 
+		if c == io.EOF {
+			break
+		}
+		if c != nil {
+			glog.Fatal(c
