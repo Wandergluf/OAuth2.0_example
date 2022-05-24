@@ -80,4 +80,7 @@ func main() {
 		if err != nil {
 			glog.Fatal(err)
 		}
-		for _, tree := range trees
+		for _, tree := range trees {
+			//tree.Print(os.Stdout)
+			sem, err := tree.Semantic()
+			//fmt.Prin
