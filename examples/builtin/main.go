@@ -75,3 +75,6 @@ func main() {
 		}
 		line = strings.TrimSpace(line)
 		fmt.Println(line)
+
+		trees, err := g.ExtractMaxAll(line, *start)
+		if err != n
