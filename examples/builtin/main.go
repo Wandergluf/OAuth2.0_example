@@ -77,4 +77,7 @@ func main() {
 		fmt.Println(line)
 
 		trees, err := g.ExtractMaxAll(line, *start)
-		if err != n
+		if err != nil {
+			glog.Fatal(err)
+		}
+		for _, tree := range trees
