@@ -90,4 +90,8 @@ func main() {
 			if *debug {
 				fmt.Printf("%s = ?\n", sem)
 			}
-			result, err
+			result, err := vm.Run(sem)
+			if err != nil {
+				glog.Error(err)
+			}
+			rs, 
