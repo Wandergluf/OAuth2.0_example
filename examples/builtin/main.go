@@ -86,4 +86,8 @@ func main() {
 			//fmt.Println(sem)
 			if err != nil {
 				glog.Fatal(err)
-		
+			}
+			if *debug {
+				fmt.Printf("%s = ?\n", sem)
+			}
+			result, err
