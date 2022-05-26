@@ -94,4 +94,6 @@ func main() {
 			if err != nil {
 				glog.Error(err)
 			}
-			rs, 
+			rs, _ := result.Export()
+			fmt.Printf("%s = %+v\n", sem, rs)
+			/
