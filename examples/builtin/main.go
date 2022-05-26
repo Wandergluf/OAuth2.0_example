@@ -96,4 +96,5 @@ func main() {
 			}
 			rs, _ := result.Export()
 			fmt.Printf("%s = %+v\n", sem, rs)
-			/
+			//eval, err := tree.Eval()
+			//fmt.Printf("Eval: %s, Err: %+
