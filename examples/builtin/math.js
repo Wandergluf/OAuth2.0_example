@@ -11,3 +11,10 @@ nf.math.sub = function(x, y) {
     return x - y;
 }
 nf.math.mul = function(x, y) {
+    return x * y;
+}
+nf.math.neg = function(x) {
+    return -x;
+}
+
+//console.log(nf.math.sum(1,1));
