@@ -5,4 +5,5 @@
          | <MulExp> {nf.I($1)}
          ;
 
-<MulE
+<MulExp> = <MulExp> "*" <ExpExp> {nf.math.mul($1,$3)}
+         | <MulExp> 
