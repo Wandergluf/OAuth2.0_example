@@ -6,4 +6,5 @@
          ;
 
 <MulExp> = <MulExp> "*" <ExpExp> {nf.math.mul($1,$3)}
-         | <MulExp> 
+         | <MulExp> "×" <ExpExp> {nf.math.mul($1,$3)}
+         | <MulExp> "\\times" <Ex
