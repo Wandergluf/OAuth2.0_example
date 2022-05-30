@@ -15,4 +15,5 @@
          | <ExpExp> {nf.I($1)}
          ;
 
-<ExpExp>
+<ExpExp> = <PriExp> "^" <ExpExp>  {nf.math.pow($1,$3)}
+ 
