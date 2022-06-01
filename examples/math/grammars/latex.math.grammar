@@ -24,4 +24,5 @@
 <SignExp> = "+" <PriExp> {nf.I($2)}
           ;
 
-<
+<PriExp> = "\(" <Exp> ")" {nf.I($2)}
+         | "{" <Exp> "}" {nf
