@@ -28,4 +28,7 @@
          | "{" <Exp> "}" {nf.I($2)}
          | "|" <Exp> "|" {nf.math.abs($2)}
          | <numeric> {nf.math.to_number($1)}
-         | <letters
+         | <letters> {nf.math.expression($1)}
+         ;
+
+<VerbExp> = 
