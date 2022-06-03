@@ -33,4 +33,6 @@
 
 <VerbExp> = <Exp> "=" <Exp> {vf.be.eq($1,$3)}
           | <Exp> "\\neq" <Exp> {vf.be.neq($1,$3)}
-          | <Exp> "≠" <Exp> {vf.be.neq(
+          | <Exp> "≠" <Exp> {vf.be.neq($1,$3)}
+          | <Exp> ">" <Exp> {vf.be.gt($1,$3)}
+          | <Ex
