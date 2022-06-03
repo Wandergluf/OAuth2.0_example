@@ -31,4 +31,5 @@
          | <letters> {nf.math.expression($1)}
          ;
 
-<VerbExp> = 
+<VerbExp> = <Exp> "=" <Exp> {vf.be.eq($1,$3)}
+          | <Exp> "\\neq
