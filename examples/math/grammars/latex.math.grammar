@@ -39,4 +39,5 @@
           | <Exp> "\\geq" <Exp> {vf.be.geq($1,$3)}
           | <Exp> "<" <Exp> {vf.be.lt($1,$3)}
           | <Exp> "≤" <Exp> {vf.be.leq($1,$3)}
-          | <Exp> "\\leq" <Exp> 
+          | <Exp> "\\leq" <Exp> {vf.be.leq($1,$3)}
+          | <Exp> "\\ " <lette
