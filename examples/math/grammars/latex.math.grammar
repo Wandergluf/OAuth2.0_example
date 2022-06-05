@@ -43,4 +43,7 @@
           | <Exp> "\\ " <letters> <Exp> {nf.math.op($3,$1,$4)}
           ;
 
-<Func
+<Func> = "f"|"g";
+
+<Exp> = <Func> "\(" <Exp> ")" {nf.math.func($1,$3)};
+
