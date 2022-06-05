@@ -49,4 +49,5 @@
 
 
 <start> = <VerbExp> {nf.I($1)}
-        | <Exp> {n
+        | <Exp> {nf.I($1)}
+        ;
