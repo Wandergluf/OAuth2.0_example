@@ -20,4 +20,6 @@
          ;
 
 <fraction> = <number> "分之" <number> {nf.math.div($3,$1)}
-  
+           ;
+
+<number> = <number> "乘" <number>        {nf.math
