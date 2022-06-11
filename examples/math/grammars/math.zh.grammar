@@ -23,4 +23,5 @@
            ;
 
 <number> = <number> "乘" <number>        {nf.math.mul($1,$3)}
-         | <number> "乘以" <number>      {nf.math.mul(
+         | <number> "乘以" <number>      {nf.math.mul($1,$3)}
+         | <number> "与" <number> "的积" {nf.math.mul
