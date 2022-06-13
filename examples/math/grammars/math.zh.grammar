@@ -28,3 +28,6 @@
          | <number> "的" <number> "倍"   {nf.math.mul($1,$3)}
          | <number> "的一半"             {nf.math.mul($1,0.5)}
          | <number> "的" <fraction>      {nf.math.mul($1,$3)}
+         ;
+
+<number> = <number> "除" <number>   {nf.math.div($3
