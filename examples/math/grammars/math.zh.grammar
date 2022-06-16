@@ -35,4 +35,4 @@
          | <fraction>               {nf.I($1)}
          ;
 
-<number
+<number> = <number> "的" <number> "次方" {nf.math.pow($1,$3)}
