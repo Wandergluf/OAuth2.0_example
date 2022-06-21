@@ -6,4 +6,8 @@
        | "five"  {nf.I(5)}
        | "six"   {nf.I(6)}
        | "seven" {nf.I(7)}
-       | "ei
+       | "eight" {nf.I(8)}
+       | "nine"  {nf.I(9)}
+       ;
+
+<numbers> = <unit>  
