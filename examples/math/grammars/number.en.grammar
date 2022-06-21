@@ -15,4 +15,6 @@
           ;
 
 <ten> = "ten"       {nf.I(10)}
-      | "eleven"    {nf.I(
+      | "eleven"    {nf.I(11)}
+      | "twelve"    {nf.I(12)}
+      | "thirteen"  {n
