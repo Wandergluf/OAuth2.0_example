@@ -10,4 +10,5 @@
        | "nine"  {nf.I(9)}
        ;
 
-<numbers> = <unit>  
+<numbers> = <unit>           {nf.I($1)}
+          | <unit> <numbers> {nf.util.concat
