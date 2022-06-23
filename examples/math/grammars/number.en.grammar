@@ -19,4 +19,6 @@
       | "twelve"    {nf.I(12)}
       | "thirteen"  {nf.I(13)}
       | "fourteen"  {nf.I(14)}
-      | "fifteen" 
+      | "fifteen"   {nf.I(15)}
+      | "sixteen"   {nf.I(16)}
+      | "se
