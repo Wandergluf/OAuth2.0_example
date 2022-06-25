@@ -29,4 +29,6 @@
 <tens> = "twenty"  {nf.I(20)}
        | "thirty"  {nf.I(30)}
        | "forty"   {nf.I(40)}
-       | "fif
+       | "fifty"   {nf.I(50)}
+       | "sixty"   {nf.I(60)}
+       | 
