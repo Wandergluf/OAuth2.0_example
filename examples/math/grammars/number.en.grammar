@@ -31,4 +31,5 @@
        | "forty"   {nf.I(40)}
        | "fifty"   {nf.I(50)}
        | "sixty"   {nf.I(60)}
-       | 
+       | "seventy" {nf.I(70)}
+       | "eighty"  {nf.I(80)
