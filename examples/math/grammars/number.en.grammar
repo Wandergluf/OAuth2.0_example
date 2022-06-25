@@ -32,4 +32,8 @@
        | "fifty"   {nf.I(50)}
        | "sixty"   {nf.I(60)}
        | "seventy" {nf.I(70)}
-       | "eighty"  {nf.I(80)
+       | "eighty"  {nf.I(80)}
+       | "ninety"  {nf.I(90)}
+       ;
+
+<e1> = <
