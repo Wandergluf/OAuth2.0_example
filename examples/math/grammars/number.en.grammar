@@ -23,4 +23,7 @@
       | "sixteen"   {nf.I(16)}
       | "seventeen" {nf.I(17)}
       | "eighteen"  {nf.I(18)}
-     
+      | "nineteen"  {nf.I(19)}
+      ;
+
+<tens> = "twenty"  {nf
