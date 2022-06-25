@@ -26,4 +26,7 @@
       | "nineteen"  {nf.I(19)}
       ;
 
-<tens> = "twenty"  {nf
+<tens> = "twenty"  {nf.I(20)}
+       | "thirty"  {nf.I(30)}
+       | "forty"   {nf.I(40)}
+       | "fif
