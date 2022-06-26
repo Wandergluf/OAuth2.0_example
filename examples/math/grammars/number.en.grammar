@@ -36,4 +36,7 @@
        | "ninety"  {nf.I(90)}
        ;
 
-<e1> = <
+<e1> = <unit> {nf.I($1)}
+     | <ten>  {nf.I($1)}
+     | <tens> {nf.I($1)}
+ 
