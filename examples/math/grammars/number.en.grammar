@@ -39,4 +39,5 @@
 <e1> = <unit> {nf.I($1)}
      | <ten>  {nf.I($1)}
      | <tens> {nf.I($1)}
- 
+     | <tens> <unit>     {nf.math.sum($1,$2)}
+     | <tens> "-" <uni
