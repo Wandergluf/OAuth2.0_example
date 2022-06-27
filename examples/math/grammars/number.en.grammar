@@ -45,4 +45,6 @@
 
 <e2>  = "hundred"  {nf.I(100)};
 <e3>  = "thousand" {nf.I(1000)};
-<e6>  = "million
+<e6>  = "million"  {nf.I(1000000)};
+<e9>  = "billion"  {nf.I(1000000000)};
+<
