@@ -51,4 +51,5 @@
 
 <e2s> = <e1> {nf.I($1)}
       | <e2> {nf.I($1)}
-      | <e1> <e2> {nf.math.mu
+      | <e1> <e2> {nf.math.mul($1,$2)}
+      | <e1> <e2> <e1>       {nf.math.sum(nf.math.mul
