@@ -59,3 +59,5 @@
 <e3s> = <e2s> {nf.I($1)}
       | <e3>  {nf.I($1)}
       | <e2s> <e3> {nf.math.mul($1,$2)}
+      | <e2s> <e3> <e2s> {nf.math.sum(nf.math.mul($1,$2),$3)}
+    
