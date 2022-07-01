@@ -66,4 +66,5 @@
 <e6s> = <e3s> {nf.I($1)}
       | <e6>  {nf.I($1)}
       | <e3s> <e6> {nf.math.mul($1,$2)}
-      | <e3s> <e6
+      | <e3s> <e6> <e3s> {nf.math.sum(nf.math.mul($1,$2),$3)}
+      | <e3s> <e
