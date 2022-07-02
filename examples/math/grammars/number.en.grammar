@@ -72,4 +72,5 @@
 
 <e9s> = <e6s> {nf.I($1)}
       | <e9>  {nf.I($1)}
-      | <e6s> 
+      | <e6s> <e9> {nf.math.mul($1,$2)}
+      | <e6s> <e9> <e6s> {nf.math.
