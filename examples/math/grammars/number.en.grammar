@@ -80,4 +80,5 @@
 <e12s> = <e9s>  {nf.I($1)}
        | <e12>  {nf.I($1)}
        | <e9s> <e12> {nf.math.mul($1,$2)}
-       | <e9s> <e12> <e9s> {nf.math.sum(nf.math.mul($1,
+       | <e9s> <e12> <e9s> {nf.math.sum(nf.math.mul($1,$2),$3)}
+       | <e9s> <e12> "and" <e9s> {nf.math.sum(nf
