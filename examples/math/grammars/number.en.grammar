@@ -84,4 +84,8 @@
        | <e9s> <e12> "and" <e9s> {nf.math.sum(nf.math.mul($1,$2),$4)}
        ;
 
-<en_decimal> = "point" <numbers> {nf.math.
+<en_decimal> = "point" <numbers> {nf.math.decimal($2)};
+
+<en_number> = <e12s> {nf.I($1)};
+
+<number> = <en_numbe
