@@ -88,4 +88,6 @@
 
 <en_number> = <e12s> {nf.I($1)};
 
-<number> = <en_numbe
+<number> = <en_number> {nf.I($1)}
+         | <en_decimal> {nf.I($1)}
+         | <
