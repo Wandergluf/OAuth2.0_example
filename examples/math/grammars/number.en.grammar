@@ -90,4 +90,5 @@
 
 <number> = <en_number> {nf.I($1)}
          | <en_decimal> {nf.I($1)}
-         | <
+         | <en_number> <en_decimal> {nf.math.sum($1,$2)}
+         |
