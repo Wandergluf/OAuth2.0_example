@@ -95,4 +95,4 @@
          ;
 
 //<number> = <number> <e3> {nf.math.mul($1,$2)};
-//<nu
+//<number> = <number> <e6> {nf.math.mul($1,$2)};
