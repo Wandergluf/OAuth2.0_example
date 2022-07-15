@@ -25,4 +25,6 @@
           | "〇" {nf.I(0)}
           ;
 
-<c
+<cn_digit> = <cn_unit> {nf.I($1)} | <cn_zero> {nf.I($1)} | <digits> {nf.I($1)};
+
+<
