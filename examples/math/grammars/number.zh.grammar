@@ -50,4 +50,5 @@
         ;
 
 <cn_e1s> = <cn_e1>                     {nf.I($1)}
-         | <cn_e1> <cn_unit>   
+         | <cn_e1> <cn_unit>           {nf.math.sum($1,$2)}
+         | <cn_unit> <cn_e1>   
