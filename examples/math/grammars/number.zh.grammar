@@ -64,4 +64,5 @@
          | <cn_e1s>                             {nf.I($1)}
          ;
 
-<cn_e3s> = <cn_unit> <c
+<cn_e3s> = <cn_unit> <cn_e3>                    {nf.math.mul($1, $2)}
+         | <
