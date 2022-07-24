@@ -71,4 +71,4 @@
          | <cn_e2s>                             {nf.I($1)}
          ;
 
-<cn_e4s> = <cn_e3
+<cn_e4s> = <cn_e3s> <cn_e4>                    {nf.math.mul($1, $2)}
