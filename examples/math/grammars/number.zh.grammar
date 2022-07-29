@@ -85,4 +85,7 @@
          | <cn_e4s>                            {nf.I($1)}
          ;
 
-<cn_decimal> = "点" <numbers> {nf.m
+<cn_decimal> = "点" <numbers> {nf.math.decimal($2)};
+
+<number> = <cn_e8s>              {nf.I($1)}
+ 
