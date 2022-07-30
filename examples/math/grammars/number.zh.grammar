@@ -89,4 +89,7 @@
 
 <number> = <cn_e8s>              {nf.I($1)}
          | <cn_decimal>          {nf.I($1)}
-         | <cn_e8
+         | <cn_e8s> <cn_decimal> {nf.math.sum($1,$2)}
+         ;
+
+<number> = <cn_e2
