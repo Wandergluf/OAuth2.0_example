@@ -23,3 +23,56 @@ var (
 	start      = flag.String("start", "number", "start rule")
 	eval       = flag.Bool("eval", false, "execute flag")
 	debug      = flag.Bool("debug", false, "debug mode")
+	cpuprofile = flag.String("cpuprofile", "", "write cpu profile to file")
+)
+
+func main() {
+	flag.Parse()
+	if *debug {
+		fmr.Debug = true
+	}
+
+	if *cpuprofile != "" {
+		f, err := os.Create(*cpuprofile)
+		if err != nil {
+			glog.Fatal(err)
+		}
+		pprof.StartCPUProfile(f)
+		defer pprof.StopCPUProfile()
+	}
+	g, err := fmr.GrammarFromFile(*grammar)
+	if err != nil {
+		glog.Fatal(err)
+	}
+	script, err := ioutil.ReadFile(*js)
+	if err != nil {
+		glog.Fatal(err)
+	}
+	vm := otto.New()
+	if _, err = vm.Run(script); err != nil {
+		glog.Fatal(err)
+	}
+
+	var in *os.File
+	if *input == "" {
+		in = os.Stdin
+	} else {
+		in, err = os.Open(*input)
+		if err != nil {
+			glog.Fatal(err)
+		}
+		defer in.Close()
+	}
+	br := bufio.NewReader(in)
+
+	for {
+		line, c := br.ReadString('\n')
+		if c == io.EOF {
+			break
+		}
+		if c != nil {
+			glog.Fatal(c)
+		}
+		line = strings.TrimSpace(line)
+		fmt.Println(line)
+		if len(line) == 0 {
