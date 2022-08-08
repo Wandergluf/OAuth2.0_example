@@ -92,3 +92,58 @@ func (g *Grammar) getCandidates(text string) (
 
 	matches, err := g.trie.MultiMatch(text)
 	if err != nil {
+		return nil, nil, err
+	}
+	frames := map[RbKey]*Frame{}
+	rules := map[string]bool{}
+	for word, hits := range matches {
+		v := g.index[word]
+		if v == nil {
+			return nil, nil, fmt.Errorf("%s in trie but not in index", word)
+		}
+		for rbKey := range v.Frames {
+			if frames[rbKey] == nil {
+				frames[rbKey] = &Frame{make(map[uint64][]*Slot), false}
+			}
+			t := Term{Value: word, Type: Terminal}
+			for _, hit := range hits {
+				frames[rbKey].Slots[t.Key()] = append(frames[rbKey].Slots[t.Key()],
+					&Slot{Pos{hit.StartByte, hit.EndByte}, nil})
+			}
+			if len(frames[rbKey].Slots) >=
+				len(g.Frames[rbKey.RuleName].Body[rbKey.BodyID].Terms) {
+				frames[rbKey].Complete = true
+			}
+		}
+		for rbKey := range v.Rules {
+			rules[rbKey.RuleName] = true
+		}
+	}
+	var ruleList []string
+	for k := range rules {
+		ruleList = append(ruleList, k)
+	}
+	for {
+		if len(ruleList) == 0 {
+			break
+		}
+		r := ruleList[0]
+		ruleList = ruleList[1:]
+
+		ret := g.ruleIndex[r]
+		if ret == nil {
+			continue
+		}
+		for rbKey := range ret.Rules {
+			if !rules[rbKey.RuleName] {
+				ruleList = append(ruleList, rbKey.RuleName)
+				rules[rbKey.RuleName] = true
+			}
+		}
+	}
+	var starts []string
+	for k := range rules {
+		starts = append(starts, k)
+	}
+	return frames, starts, nil
+}
