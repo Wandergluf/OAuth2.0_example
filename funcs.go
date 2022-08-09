@@ -23,3 +23,24 @@ func Call(fn string, args ...interface{}) (interface{}, error) {
 	if len(ret) == 0 {
 		return nil, nil
 	}
+	return ret[0].Interface(), nil
+}
+
+func fmrList(items ...interface{}) []interface{} {
+	return items
+}
+
+func fmrEntity(items ...interface{}) map[string]interface{} {
+	l := len(items)
+	if l == 0 {
+		return nil
+	}
+	typ := fmt.Sprintf("%v", items[0])
+	if typ == "" {
+		return nil
+	}
+	if l == 1 {
+		return map[string]interface{}{typ: nil}
+	}
+	return map[string]interface{}{typ: items[1:]}
+}
