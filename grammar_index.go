@@ -7,4 +7,4 @@ import (
 	"github.com/liuzl/dict"
 )
 
-func updateI
+func updateIndex(index map[string]*Index, k string, cate string, v RbKey) error
