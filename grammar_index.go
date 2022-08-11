@@ -9,4 +9,6 @@ import (
 
 func updateIndex(index map[string]*Index, k string, cate string, v RbKey) error {
 	if index == nil {
-		return fmt.Errorf("nil gram
+		return fmt.Errorf("nil grammar index")
+	}
+	if cate != "frame" && cate != "rule" {
