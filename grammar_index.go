@@ -19,4 +19,8 @@ func updateIndex(index map[string]*Index, k string, cate string, v RbKey) error 
 	}
 	switch cate {
 	case "frame":
-		index[k].Frames[v] = struct{}
+		index[k].Frames[v] = struct{}{}
+	case "rule":
+		index[k].Rules[v] = struct{}{}
+	}
+	return 
