@@ -15,4 +15,8 @@ func updateIndex(index map[string]*Index, k string, cate string, v RbKey) error 
 		return fmt.Errorf("invalid cate %s", cate)
 	}
 	if index[k] == nil {
-		index[k] = &Index{make(map[RbKey]struct{}), make(map[RbKey]struct{})
+		index[k] = &Index{make(map[RbKey]struct{}), make(map[RbKey]struct{})}
+	}
+	switch cate {
+	case "frame":
+		index[k].Frames[v] = struct{}
