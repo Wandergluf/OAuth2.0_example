@@ -23,4 +23,7 @@ func updateIndex(index map[string]*Index, k string, cate string, v RbKey) error 
 	case "rule":
 		index[k].Rules[v] = struct{}{}
 	}
-	return 
+	return nil
+}
+
+func (g *Grammar) indexRules(rules map[string]*Rule, ca
