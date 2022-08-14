@@ -26,4 +26,7 @@ func updateIndex(index map[string]*Index, k string, cate string, v RbKey) error 
 	return nil
 }
 
-func (g *Grammar) indexRules(rules map[string]*Rule, ca
+func (g *Grammar) indexRules(rules map[string]*Rule, cate string) error {
+	var err error
+	for _, rule := range rules {
+		
