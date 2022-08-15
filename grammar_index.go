@@ -30,4 +30,6 @@ func (g *Grammar) indexRules(rules map[string]*Rule, cate string) error {
 	var err error
 	for _, rule := range rules {
 		for id, body := range rule.Body {
-			for _, term := ra
+			for _, term := range body.Terms {
+				v := RbKey{rule.Name, id}
+				value
