@@ -38,4 +38,7 @@ func (g *Grammar) indexRules(rules map[string]*Rule, cate string) error {
 				}
 				switch term.Type {
 				case Terminal:
-					if err = g.trie.SafeUpdate([]byte(value), 1); err != 
+					if err = g.trie.SafeUpdate([]byte(value), 1); err != nil {
+						return err
+					}
+					if err = updateIndex(g.index, value, cate,
