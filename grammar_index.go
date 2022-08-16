@@ -41,4 +41,7 @@ func (g *Grammar) indexRules(rules map[string]*Rule, cate string) error {
 					if err = g.trie.SafeUpdate([]byte(value), 1); err != nil {
 						return err
 					}
-					if err = updateIndex(g.index, value, cate,
+					if err = updateIndex(g.index, value, cate, v); err != nil {
+						return err
+					}
+				case No
