@@ -33,4 +33,8 @@ func (g *Grammar) indexRules(rules map[string]*Rule, cate string) error {
 			for _, term := range body.Terms {
 				v := RbKey{rule.Name, id}
 				value := strings.TrimSpace(term.Value)
-				if value ==
+				if value == "" {
+					continue
+				}
+				switch term.Type {
+				
