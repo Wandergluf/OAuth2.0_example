@@ -37,4 +37,5 @@ func (g *Grammar) indexRules(rules map[string]*Rule, cate string) error {
 					continue
 				}
 				switch term.Type {
-				
+				case Terminal:
+					if err = g.trie.SafeUpdate([]byte(value), 1); err != 
