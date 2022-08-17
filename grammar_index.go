@@ -53,3 +53,8 @@ func (g *Grammar) indexRules(rules map[string]*Rule, cate string) error {
 		}
 	}
 	return nil
+}
+
+func (g *Grammar) buildIndex() error {
+	if g.Refined {
+		retu
