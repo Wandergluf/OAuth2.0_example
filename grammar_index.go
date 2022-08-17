@@ -57,4 +57,4 @@ func (g *Grammar) indexRules(rules map[string]*Rule, cate string) error {
 
 func (g *Grammar) buildIndex() error {
 	if g.Refined {
-		retu
+		return fmt.Errorf("should call Grammar.index before Grammar.refi
