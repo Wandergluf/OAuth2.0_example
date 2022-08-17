@@ -45,4 +45,11 @@ func (g *Grammar) indexRules(rules map[string]*Rule, cate string) error {
 						return err
 					}
 				case Nonterminal:
-					if err = updateIndex(g.ruleIndex, value, cate, v
+					if err = updateIndex(g.ruleIndex, value, cate, v); err != nil {
+						return err
+					}
+				}
+			}
+		}
+	}
+	return nil
