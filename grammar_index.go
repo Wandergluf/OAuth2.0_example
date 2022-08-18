@@ -66,4 +66,6 @@ func (g *Grammar) buildIndex() error {
 	gs := []*Grammar{g}
 	gs = append(gs, g.includes...)
 	for _, ig := range gs {
-		if err := g.in
+		if err := g.indexRules(ig.Frames, "frame"); err != nil {
+			return err
+		
