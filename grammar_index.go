@@ -57,4 +57,8 @@ func (g *Grammar) indexRules(rules map[string]*Rule, cate string) error {
 
 func (g *Grammar) buildIndex() error {
 	if g.Refined {
-		return fmt.Errorf("should call Grammar.index before Grammar.refi
+		return fmt.Errorf("should call Grammar.index before Grammar.refine")
+	}
+	g.trie = dict.New()
+	g.index = make(map[string]*Index)
+	g.ruleIndex
