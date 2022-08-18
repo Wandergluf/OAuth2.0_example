@@ -64,4 +64,6 @@ func (g *Grammar) buildIndex() error {
 	g.ruleIndex = make(map[string]*Index)
 
 	gs := []*Grammar{g}
-	gs = append(gs, g.i
+	gs = append(gs, g.includes...)
+	for _, ig := range gs {
+		if err := g.in
