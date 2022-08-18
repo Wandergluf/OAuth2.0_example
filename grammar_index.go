@@ -61,4 +61,7 @@ func (g *Grammar) buildIndex() error {
 	}
 	g.trie = dict.New()
 	g.index = make(map[string]*Index)
-	g.ruleIndex
+	g.ruleIndex = make(map[string]*Index)
+
+	gs := []*Grammar{g}
+	gs = append(gs, g.i
