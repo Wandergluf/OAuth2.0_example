@@ -68,4 +68,6 @@ func (g *Grammar) buildIndex() error {
 	for _, ig := range gs {
 		if err := g.indexRules(ig.Frames, "frame"); err != nil {
 			return err
-		
+		}
+		if err := g.indexRules(ig.Rules, "rule"); err != nil {
+			re
