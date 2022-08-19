@@ -70,4 +70,8 @@ func (g *Grammar) buildIndex() error {
 			return err
 		}
 		if err := g.indexRules(ig.Rules, "rule"); err != nil {
-			re
+			return err
+		}
+	}
+	return nil
+}
