@@ -5,4 +5,5 @@ import (
 	"strings"
 
 	"github.com/liuzl/ling"
-	"git
+	"github.com/liuzl/unidecode"
+	"github.com/mitchellh
