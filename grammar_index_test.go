@@ -5,4 +5,9 @@ import (
 )
 
 func TestGrammarIndex(t *testing.T) {
-	g, err := GrammarFromF
+	g, err := GrammarFromFile("sf.grammar")
+	if err != nil {
+		t.Error(err)
+	}
+	t.Log(g)
+}
