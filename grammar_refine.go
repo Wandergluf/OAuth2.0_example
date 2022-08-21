@@ -6,4 +6,7 @@ import (
 
 	"github.com/liuzl/ling"
 	"github.com/liuzl/unidecode"
-	"github.com/mitchellh
+	"github.com/mitchellh/hashstructure"
+)
+
+func (g *Grammar) refine(prefix string) error {
