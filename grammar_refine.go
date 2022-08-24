@@ -14,4 +14,5 @@ func (g *Grammar) refine(prefix string) error {
 		return nil
 	}
 	var terminalRules []*Rule
-	var
+	var terminals = make(map[string]string)
+	var names = make(map[strin
