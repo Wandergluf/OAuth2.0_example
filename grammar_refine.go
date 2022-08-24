@@ -10,3 +10,8 @@ import (
 )
 
 func (g *Grammar) refine(prefix string) error {
+	if g.Refined {
+		return nil
+	}
+	var terminalRules []*Rule
+	var
