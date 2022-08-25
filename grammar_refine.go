@@ -18,4 +18,6 @@ func (g *Grammar) refine(prefix string) error {
 	var names = make(map[string]bool)
 	var n int
 	var name string
-	for _, rule := range g.Rules 
+	for _, rule := range g.Rules {
+		for _, body := range rule.Body {
+			for _, term := range body.T
