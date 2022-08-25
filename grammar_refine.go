@@ -15,4 +15,7 @@ func (g *Grammar) refine(prefix string) error {
 	}
 	var terminalRules []*Rule
 	var terminals = make(map[string]string)
-	var names = make(map[strin
+	var names = make(map[string]bool)
+	var n int
+	var name string
+	for _, rule := range g.Rules 
