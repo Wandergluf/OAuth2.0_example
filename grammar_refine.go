@@ -22,4 +22,6 @@ func (g *Grammar) refine(prefix string) error {
 		for _, body := range rule.Body {
 			for _, term := range body.Terms {
 				if term.Type != Terminal {
-					con
+					continue
+				}
+				// if this is a terminal text inside a ruleBody
