@@ -20,4 +20,6 @@ func (g *Grammar) refine(prefix string) error {
 	var name string
 	for _, rule := range g.Rules {
 		for _, body := range rule.Body {
-			for _, term := range body.T
+			for _, term := range body.Terms {
+				if term.Type != Terminal {
+					con
