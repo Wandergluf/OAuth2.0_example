@@ -25,3 +25,5 @@ func (g *Grammar) refine(prefix string) error {
 					continue
 				}
 				// if this is a terminal text inside a ruleBody
+				if t, has := terminals[term.Value]; has {
+					t
