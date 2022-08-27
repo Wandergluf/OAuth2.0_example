@@ -26,4 +26,7 @@ func (g *Grammar) refine(prefix string) error {
 				}
 				// if this is a terminal text inside a ruleBody
 				if t, has := terminals[term.Value]; has {
-					t
+					term.Value = t
+				} else {
+					d := ling.NewDocument(term.Value)
+					if err := NL
