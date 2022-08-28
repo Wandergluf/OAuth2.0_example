@@ -39,4 +39,5 @@ func (g *Grammar) refine(prefix string) error {
 							continue
 						}
 						if token.Type != ling.Punct {
-							ascii := unidecode.Unidecode(to
+							ascii := unidecode.Unidecode(token.Text)
+							ascii = strings.Join(strings.Fields(ascii), 
