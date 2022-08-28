@@ -32,4 +32,7 @@ func (g *Grammar) refine(prefix string) error {
 					if err := NLP().Annotate(d); err != nil {
 						return err
 					}
-					tname := prefix 
+					tname := prefix + "_t"
+					rb := &RuleBody{}
+					for _, token := range d.Tokens {
+		
