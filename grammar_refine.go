@@ -35,4 +35,7 @@ func (g *Grammar) refine(prefix string) error {
 					tname := prefix + "_t"
 					rb := &RuleBody{}
 					for _, token := range d.Tokens {
-		
+						if token.Type == ling.Space {
+							continue
+						}
+					
