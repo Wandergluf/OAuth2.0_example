@@ -38,4 +38,5 @@ func (g *Grammar) refine(prefix string) error {
 						if token.Type == ling.Space {
 							continue
 						}
-					
+						if token.Type != ling.Punct {
+							ascii := unidecode.Unidecode(to
