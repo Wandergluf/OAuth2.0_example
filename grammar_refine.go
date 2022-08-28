@@ -29,4 +29,7 @@ func (g *Grammar) refine(prefix string) error {
 					term.Value = t
 				} else {
 					d := ling.NewDocument(term.Value)
-					if err := NL
+					if err := NLP().Annotate(d); err != nil {
+						return err
+					}
+					tname := prefix 
