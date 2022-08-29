@@ -40,4 +40,7 @@ func (g *Grammar) refine(prefix string) error {
 						}
 						if token.Type != ling.Punct {
 							ascii := unidecode.Unidecode(token.Text)
-							ascii = strings.Join(strings.Fields(ascii), 
+							ascii = strings.Join(strings.Fields(ascii), "_")
+							tname += "_" + ascii
+						}
+						rb.T
