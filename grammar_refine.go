@@ -48,4 +48,6 @@ func (g *Grammar) refine(prefix string) error {
 						if gTokens.get(token.Text) == nil {
 							gTokens.put(token.Text, token)
 						}
-			
+					}
+					for name, n = tname, 0; ; name, n =
+						fmt.Sprintf("%s
