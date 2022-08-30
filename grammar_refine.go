@@ -44,4 +44,5 @@ func (g *Grammar) refine(prefix string) error {
 							tname += "_" + ascii
 						}
 						rb.Terms = append(rb.Terms,
-							&Term{Value: token.T
+							&Term{Value: token.Text, Type: Terminal, Meta: term.Meta})
+						if gTokens.get(
