@@ -43,4 +43,5 @@ func (g *Grammar) refine(prefix string) error {
 							ascii = strings.Join(strings.Fields(ascii), "_")
 							tname += "_" + ascii
 						}
-						rb.T
+						rb.Terms = append(rb.Terms,
+							&Term{Value: token.T
