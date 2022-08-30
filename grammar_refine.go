@@ -45,4 +45,7 @@ func (g *Grammar) refine(prefix string) error {
 						}
 						rb.Terms = append(rb.Terms,
 							&Term{Value: token.Text, Type: Terminal, Meta: term.Meta})
-						if gTokens.get(
+						if gTokens.get(token.Text) == nil {
+							gTokens.put(token.Text, token)
+						}
+			
