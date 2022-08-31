@@ -51,4 +51,9 @@ func (g *Grammar) refine(prefix string) error {
 					}
 					for name, n = tname, 0; ; name, n =
 						fmt.Sprintf("%s_%d", tname, n), n+1 {
-						if g.Rules[name] == nil && !names[name]
+						if g.Rules[name] == nil && !names[name] {
+							break
+						}
+					}
+					names[name] = true
+			
