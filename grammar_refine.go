@@ -62,4 +62,7 @@ func (g *Grammar) refine(prefix string) error {
 						return err
 					}
 					terminalRules = append(terminalRules,
-						&Rule{name, map[uint64]*RuleBody{hash
+						&Rule{name, map[uint64]*RuleBody{hash: rb}})
+					term.Value = name
+				}
+				term.Type = 
