@@ -58,3 +58,7 @@ func (g *Grammar) refine(prefix string) error {
 					names[name] = true
 					terminals[term.Value] = name
 					hash, err := hashstructure.Hash(rb, nil)
+					if err != nil {
+						return err
+					}
+					terminalRules =
