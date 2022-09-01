@@ -61,4 +61,5 @@ func (g *Grammar) refine(prefix string) error {
 					if err != nil {
 						return err
 					}
-					terminalRules =
+					terminalRules = append(terminalRules,
+						&Rule{name, map[uint64]*RuleBody{hash
