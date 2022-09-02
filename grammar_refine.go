@@ -65,4 +65,8 @@ func (g *Grammar) refine(prefix string) error {
 						&Rule{name, map[uint64]*RuleBody{hash: rb}})
 					term.Value = name
 				}
-				term.Type = 
+				term.Type = Nonterminal
+			}
+		}
+	}
+	for _, r := range terminalRules 
