@@ -73,4 +73,5 @@ func (g *Grammar) refine(prefix string) error {
 		g.Rules[r.Name] = r
 	}
 	g.Refined = true
-	retu
+	return nil
+}
