@@ -69,4 +69,8 @@ func (g *Grammar) refine(prefix string) error {
 			}
 		}
 	}
-	for _, r := range terminalRules 
+	for _, r := range terminalRules {
+		g.Rules[r.Name] = r
+	}
+	g.Refined = true
+	retu
