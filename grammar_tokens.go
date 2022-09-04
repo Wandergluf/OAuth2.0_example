@@ -7,4 +7,8 @@ import (
 )
 
 type cMap struct {
-	tokens map[string]*ling.
+	tokens map[string]*ling.Token
+	sync.RWMutex
+}
+
+func (m *cMap) get(k stri
