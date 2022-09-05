@@ -14,4 +14,7 @@ type cMap struct {
 func (m *cMap) get(k string) *ling.Token {
 	m.RLock()
 	defer m.RUnlock()
-	ret
+	return m.tokens[k]
+}
+
+func (m *cMap) put(k string, token *ling.Tok
