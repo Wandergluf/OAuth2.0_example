@@ -11,4 +11,7 @@ type cMap struct {
 	sync.RWMutex
 }
 
-func (m *cMap) get(k stri
+func (m *cMap) get(k string) *ling.Token {
+	m.RLock()
+	defer m.RUnlock()
+	ret
