@@ -17,4 +17,10 @@ func (m *cMap) get(k string) *ling.Token {
 	return m.tokens[k]
 }
 
-func (m *cMap) put(k string, token *ling.Tok
+func (m *cMap) put(k string, token *ling.Token) {
+	m.Lock()
+	defer m.Unlock()
+	m.tokens[k] = token
+}
+
+var 
