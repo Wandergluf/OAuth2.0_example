@@ -1,0 +1,8 @@
+
+/*
+ * Author: liang@zliu.org
+ */
+
+#include "math.zh.grammar"
+
+<limit_prefix> = "前";

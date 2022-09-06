@@ -23,4 +23,4 @@ func (m *cMap) put(k string, token *ling.Token) {
 	m.tokens[k] = token
 }
 
-var 
+var gTokens = &cMap{tokens: make(map[string]*ling.Token)}
