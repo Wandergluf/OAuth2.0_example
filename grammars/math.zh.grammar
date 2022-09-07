@@ -7,4 +7,6 @@
 // for local grammars that come from regex tagger
 <number> = <numeric> {nf.math.to_number($1)};
 
-<number> = <number> "打" {nf.math.mul($1, 12
+<number> = <number> "打" {nf.math.mul($1, 12)};
+
+<number> = <number> "加" <number>        {nf.math.sum
