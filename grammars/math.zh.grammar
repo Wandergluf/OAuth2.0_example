@@ -22,3 +22,6 @@
 <fraction> = <number> "分之" <number> {nf.math.div($3,$1)}
            | <numeric> "%" {nf.math.div($1, 100)}
            ;
+
+<number> = <number> "乘" <number>        {nf.math.mul($1,$3)}
+         | <n
