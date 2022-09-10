@@ -20,4 +20,5 @@
          ;
 
 <fraction> = <number> "分之" <number> {nf.math.div($3,$1)}
-           |
+           | <numeric> "%" {nf.math.div($1, 100)}
+           ;
