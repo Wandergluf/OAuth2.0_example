@@ -26,4 +26,6 @@
           ;
 
 
-<cn_digit> = <cn_unit> 
+<cn_digit> = <cn_unit> {nf.I($1)} | <cn_zero> {nf.I($1)} | <digits> {nf.I($1)};
+
+<
