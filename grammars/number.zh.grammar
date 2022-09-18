@@ -22,4 +22,8 @@
           ;
 
 <cn_zero> = "零" {nf.I(0)}
-          | "
+          | "〇" {nf.I(0)}
+          ;
+
+
+<cn_digit> = <cn_unit> 
