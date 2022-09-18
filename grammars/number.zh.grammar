@@ -29,4 +29,8 @@
 <cn_digit> = <cn_unit> {nf.I($1)} | <cn_zero> {nf.I($1)} | <digits> {nf.I($1)};
 
 <numbers> = <cn_digit> {nf.I($1)}
-          | <cn_digit> <numbers> {nf
+          | <cn_digit> <numbers> {nf.util.concat($1, $2)}
+          ;
+
+<cn_e1> = "十" {nf.I(10)}
+        | "拾" {nf
