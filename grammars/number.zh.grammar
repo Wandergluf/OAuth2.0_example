@@ -59,4 +59,5 @@
          ;
 
 <cn_e2s> = <cn_unit> <cn_e2>                    {nf.math.mul($1, $2)}
-         | <cn_unit> <cn_e2> <cn_unit>          {nf.mat
+         | <cn_unit> <cn_e2> <cn_unit>          {nf.math.sum(nf.math.mul($1, $2), nf.math.mul(10,$3))}
+         | 
