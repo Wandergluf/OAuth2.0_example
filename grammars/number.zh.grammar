@@ -66,4 +66,5 @@
          ;
 
 <cn_e3s> = <cn_unit> <cn_e3>                    {nf.math.mul($1, $2)}
-         | <cn_unit> <cn_e3> <cn_unit>          {nf.math.sum(nf.math.mul(
+         | <cn_unit> <cn_e3> <cn_unit>          {nf.math.sum(nf.math.mul($1, $2), nf.math.mul(100,$3))}
+         | <cn_unit> <cn_e3> 
