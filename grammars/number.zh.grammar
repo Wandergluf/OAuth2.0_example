@@ -80,4 +80,5 @@
          | <numeric> <cn_e4>                   {nf.math.mul($1, $2)}
          ;
 
-<cn_e8s> = <cn_e4s> <cn_e8>                 
+<cn_e8s> = <cn_e4s> <cn_e8>                    {nf.math.mul($1, $2)}
+         | <cn_e4s> <cn_e8> <cn_unit>          {nf.math
