@@ -84,4 +84,5 @@
          | <cn_e4s> <cn_e8> <cn_unit>          {nf.math.sum(nf.math.mul($1, $2), nf.math.mul(10000000,$3))}
          | <cn_e4s> <cn_e8> <cn_e4s>           {nf.math.sum(nf.math.mul($1, $2), $3)}
          | <cn_e4s> <cn_e8> <cn_zero> <cn_e4s> {nf.math.sum(nf.math.mul($1, $2), $4)}
-        
+         | <cn_e4s>                            {nf.I($1)}
+         
