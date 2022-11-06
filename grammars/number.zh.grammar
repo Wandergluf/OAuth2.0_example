@@ -88,4 +88,6 @@
          | <numeric> <cn_e8>                   {nf.math.mul($1, $2)}
          ;
 
-<cn_
+<cn_decimal> = "点" <numbers> {nf.math.decimal($2)};
+
+<numbe
