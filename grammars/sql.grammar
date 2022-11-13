@@ -3,4 +3,7 @@
 
 <order> = <iorder> {nf.I($1)}
         | <iorder> <number> {nf.sql.mix(nf.I($1),nf.sql.limit($2))}
-        | <iorder> (any) <number> {nf.sql.mix(nf.I($1)
+        | <iorder> (any) <number> {nf.sql.mix(nf.I($1),nf.sql.limit($3))}
+        ;
+
+[sql] = <order> <limit> {nf.
