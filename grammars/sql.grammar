@@ -1,4 +1,5 @@
 #include "order.grammar"
 #include "limit.grammar"
 
-<order> = <iorder> {
+<order> = <iorder> {nf.I($1)}
+        | <iorder> <number> {nf.sql.mix(nf.I($1),nf.sql.limit($2))}
