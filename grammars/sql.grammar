@@ -6,4 +6,4 @@
         | <iorder> (any) <number> {nf.sql.mix(nf.I($1),nf.sql.limit($3))}
         ;
 
-[sql] = <order> <limit> {nf.
+[sql] = <order> <limit> {nf.sql.gen($1,$2)};
