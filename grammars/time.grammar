@@ -1,3 +1,4 @@
 #include "math.zh.grammar"
 
-<year> = 
+<year> = <number> "年" {nf.datetime.year($1)}
+//       | <numbers> "年" {nf
