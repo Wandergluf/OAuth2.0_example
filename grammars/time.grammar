@@ -1,4 +1,6 @@
 #include "math.zh.grammar"
 
 <year> = <number> "年" {nf.datetime.year($1)}
-//       | <numbers> "年" {nf
+//       | <numbers> "年" {nf.datetime.year($1)}
+       ;
+<month> = <number> "月" {nf.dateti
