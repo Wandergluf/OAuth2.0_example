@@ -16,4 +16,7 @@
        | <day> {nf.I($1)}
        ;
 
-<time> = <date>; // tagger里面也会根据正
+<time> = <date>; // tagger里面也会根据正则打标一些
+
+<before> = <time> "前"         {nf.sql.where("<", $1)}
+  
