@@ -3,4 +3,6 @@
 <year> = <number> "年" {nf.datetime.year($1)}
 //       | <numbers> "年" {nf.datetime.year($1)}
        ;
-<month> = <number> "月" {nf.dateti
+<month> = <number> "月" {nf.datetime.month($1)};
+<day> = <number> "日" {nf.datetime.month($1)}
+     
