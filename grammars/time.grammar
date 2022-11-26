@@ -8,4 +8,7 @@
       | <number> "号" {nf.datetime.month($1)};
 
 
-<date> = <ye
+<date> = <year> <month> <day>
+       | <month> <day>
+       | <year> <month>
+   
