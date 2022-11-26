@@ -13,4 +13,7 @@
        | <year> <month>
        | <year> {nf.I($1)}
        | <month> {nf.I($1)}
-       | <day> {
+       | <day> {nf.I($1)}
+       ;
+
+<time> = <date>; // tagger里面也会根据正
