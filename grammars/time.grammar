@@ -11,4 +11,6 @@
 <date> = <year> <month> <day>
        | <month> <day>
        | <year> <month>
-   
+       | <year> {nf.I($1)}
+       | <month> {nf.I($1)}
+       | <day> {
