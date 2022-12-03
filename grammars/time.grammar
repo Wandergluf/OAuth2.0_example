@@ -29,3 +29,5 @@
          ;
 
 <after> = <time> "后"         {nf.sql.where(">", $1)}
+        | <time> "之后"       {nf.sql.where(">", $1)}
+       
