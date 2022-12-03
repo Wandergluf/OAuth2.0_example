@@ -26,3 +26,6 @@
          | <time> "及其之前"   {nf.sql.where("<=", $1)}
          | <number> "及之前"   {nf.sql.where("<=", $1)}
          | <number> "及其之前" {nf.sql.where("<=", $1)}
+         ;
+
+<after> = <time> "后"         {nf.sql.where(">", $1)}
