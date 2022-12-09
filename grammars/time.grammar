@@ -35,4 +35,5 @@
         | <time> "及之后"     {nf.sql.where(">=", $1)}
         | <time> "及其之后"   {nf.sql.where(">=", $1)}
         | <number> "及之后"   {nf.sql.where(">=", $1)}
-        | <number> 
+        | <number> "及其之后" {nf.sql.where(">=", $1)}
+        ;
