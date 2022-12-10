@@ -91,3 +91,4 @@ func (g *Grammar) localGrammar(d *ling.Document) (*Grammar, error) {
 		}
 	*/
 	return l, nil
+}
