@@ -8,4 +8,5 @@ import (
 )
 
 func TestLocalGrammar(t *testing.T) {
-	tes
+	tests := []string{
+		`天津，liang@zliu.org是我的邮箱，https://crawler.club是爬虫主页`
