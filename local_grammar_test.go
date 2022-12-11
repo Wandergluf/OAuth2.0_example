@@ -19,4 +19,8 @@ func TestLocalGrammar(t *testing.T) {
 			t.Error(err)
 		}
 		g := Grammar{}
-		l, err := g.localG
+		l, err := g.localGrammar(d)
+		if err != nil {
+			t.Error(err)
+		}
+		b, err := 
