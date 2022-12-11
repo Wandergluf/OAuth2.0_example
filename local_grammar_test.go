@@ -13,4 +13,6 @@ func TestLocalGrammar(t *testing.T) {
 		`关于FMR的介绍在这里：https://zliu.org/project/fmr/,好的`,
 		`柏乡县是一个历史悠久的小城，高邑县也是，南开区呢，海淀区，思明区在哪里`,
 	}
-	for _, c := range tests 
+	for _, c := range tests {
+		d := ling.NewDocument(c)
+		if err := NLP().An
