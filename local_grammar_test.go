@@ -15,4 +15,8 @@ func TestLocalGrammar(t *testing.T) {
 	}
 	for _, c := range tests {
 		d := ling.NewDocument(c)
-		if err := NLP().An
+		if err := NLP().Annotate(d); err != nil {
+			t.Error(err)
+		}
+		g := Grammar{}
+		l, err := g.localG
