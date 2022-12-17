@@ -79,3 +79,31 @@ func odd(x string) string {
 	}
 	return "false"
 }
+
+func prime(x string) string {
+	xi := new(big.Int)
+	if _, err := fmt.Sscan(x, xi); err == nil && xi.ProbablyPrime(10) {
+		return "true"
+	}
+	return "false"
+}
+
+func calc(x, y, method string) string {
+	xf, yf := new(big.Float), new(big.Float)
+	if _, err := fmt.Sscan(x, xf); err != nil {
+		return ""
+	}
+	if _, err := fmt.Sscan(y, yf); err != nil {
+		return ""
+	}
+	switch method {
+	case "Add":
+		return xf.Add(xf, yf).String()
+	case "Sub":
+		return xf.Sub(xf, yf).String()
+	case "Mul":
+		return xf.Mul(xf, yf).String()
+	default:
+		return ""
+	}
+}
