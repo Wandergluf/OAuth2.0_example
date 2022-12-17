@@ -25,4 +25,8 @@ func TestLocalGrammar(t *testing.T) {
 		}
 		b, err := goutil.JSONMarshalIndent(l, "", "  ")
 		if err != nil {
-			t.
+			t.Error(err)
+		}
+		t.Log(string(b))
+	}
+}
