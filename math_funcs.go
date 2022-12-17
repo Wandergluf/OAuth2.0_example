@@ -25,3 +25,57 @@ func sum(x, y string) string {
 }
 
 func sub(x, y string) string {
+	return calc(x, y, "Sub")
+}
+
+func mul(x, y string) string {
+	return calc(x, y, "Mul")
+}
+
+func div(x, y string) string {
+	fx, err := strconv.ParseFloat(x, 64)
+	if err != nil {
+		return fmt.Sprintf("%s/%s", x, y)
+	}
+	fy, err := strconv.ParseFloat(y, 64)
+	if err != nil || fy == 0 {
+		return fmt.Sprintf("%s/%s", x, y)
+	}
+	return fmt.Sprintf("%f", fx/fy)
+}
+
+func pow(x, y string) string {
+	fx, err := strconv.ParseFloat(x, 64)
+	if err != nil {
+		return fmt.Sprintf("%s^%s", x, y)
+	}
+	fy, err := strconv.ParseFloat(y, 64)
+	if err != nil {
+		return fmt.Sprintf("%s^%s", x, y)
+	}
+	return fmt.Sprintf("%f", math.Pow(fx, fy))
+}
+
+func neg(x string) string {
+	xf := new(big.Float)
+	if _, err := fmt.Sscan(x, xf); err != nil {
+		return ""
+	}
+	return xf.Neg(xf).String()
+}
+
+func even(x string) string {
+	xi := new(big.Int)
+	if _, err := fmt.Sscan(x, xi); err == nil && xi.Bit(0) == 0 {
+		return "true"
+	}
+	return "false"
+}
+
+func odd(x string) string {
+	xi := new(big.Int)
+	if _, err := fmt.Sscan(x, xi); err == nil && xi.Bit(0) == 1 {
+		return "true"
+	}
+	return "false"
+}
