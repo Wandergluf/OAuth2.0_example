@@ -5,4 +5,5 @@ import (
 	"zliu.org/goutil"
 )
 
-func (g *G
+func (g *Grammar) regexpTag(d *ling.Document) {
+	if d == nil || len(d.Tokens) == 0 
