@@ -13,4 +13,7 @@ func (g *Grammar) regexpTag(d *ling.Document) {
 	for typ, s := range g.Regexps {
 		re, err := goutil.Regexp(s)
 		if err != nil {
-			co
+			continue
+		}
+		matches := re.FindAllStringIndex(d.Text, -1)
+		f
