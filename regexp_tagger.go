@@ -16,4 +16,6 @@ func (g *Grammar) regexpTag(d *ling.Document) {
 			continue
 		}
 		matches := re.FindAllStringIndex(d.Text, -1)
-		f
+		for _, match := range matches {
+			start := -1
+			e
