@@ -20,4 +20,6 @@ func (g *Grammar) regexpTag(d *ling.Document) {
 			start := -1
 			end := -1
 			for _, token := range d.Tokens {
-				if tok
+				if token.StartByte == match[0] {
+					start = token.I
+		
