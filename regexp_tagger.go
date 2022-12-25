@@ -18,4 +18,6 @@ func (g *Grammar) regexpTag(d *ling.Document) {
 		matches := re.FindAllStringIndex(d.Text, -1)
 		for _, match := range matches {
 			start := -1
-			e
+			end := -1
+			for _, token := range d.Tokens {
+				if tok
