@@ -10,4 +10,7 @@ func (g *Grammar) regexpTag(d *ling.Document) {
 		return
 	}
 
-	for typ, s := range
+	for typ, s := range g.Regexps {
+		re, err := goutil.Regexp(s)
+		if err != nil {
+			co
