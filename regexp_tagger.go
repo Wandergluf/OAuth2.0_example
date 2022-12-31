@@ -24,4 +24,8 @@ func (g *Grammar) regexpTag(d *ling.Document) {
 					start = token.I
 				}
 				if token.EndByte == match[1] {
-					end =
+					end = token.I + 1
+				}
+			}
+			if start == -1 || end == -1 {
+				
