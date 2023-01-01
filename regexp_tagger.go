@@ -28,4 +28,6 @@ func (g *Grammar) regexpTag(d *ling.Document) {
 				}
 			}
 			if start == -1 || end == -1 {
-				
+				continue
+			}
+			span := &ling.Span{Doc: d, Start: start, 
