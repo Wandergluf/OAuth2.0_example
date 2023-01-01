@@ -30,4 +30,5 @@ func (g *Grammar) regexpTag(d *ling.Document) {
 			if start == -1 || end == -1 {
 				continue
 			}
-			span := &ling.Span{Doc: d, Start: start, 
+			span := &ling.Span{Doc: d, Start: start, End: end,
+				Annotations: map[string]interface{}{"fr
