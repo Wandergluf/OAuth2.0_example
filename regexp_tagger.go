@@ -32,4 +32,8 @@ func (g *Grammar) regexpTag(d *ling.Document) {
 			}
 			span := &ling.Span{Doc: d, Start: start, End: end,
 				Annotations: map[string]interface{}{"from": "grammar_re",
-					"value": map[string]interface{}{typ: 
+					"value": map[string]interface{}{typ: ""}}}
+			d.Spans = append(d.Spans, span)
+		}
+	}
+}
