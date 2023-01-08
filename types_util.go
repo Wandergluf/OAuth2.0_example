@@ -5,4 +5,5 @@ import (
 	"math/big"
 )
 
-func meta
+func metaEqual(m1, m2 interface{}) bool {
+	if m1 == nil && m2 == nil {
