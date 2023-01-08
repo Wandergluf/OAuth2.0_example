@@ -58,3 +58,9 @@ func (r *TermType) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("TermType should be a string, got %s", data)
 	}
 	v, ok := _TermTypeNameToValue[s]
+	if !ok {
+		return fmt.Errorf("invalid TermType %q", s)
+	}
+	*r = v
+	return nil
+}
