@@ -111,3 +111,7 @@ type Arg struct {
 }
 
 // FMR stands for Funtional Meaning Representation
+type FMR struct {
+	Fn   string `json:"fn,omitempty"`
+	Args []*Arg `json:"args,omitempty"`
+}
