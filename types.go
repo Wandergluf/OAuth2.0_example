@@ -61,3 +61,53 @@ type Frame struct {
 func (f *Frame) String() string {
 	return fmt.Sprintf("Complete:%+v, %+v", f.Complete, f.Slots)
 }
+
+// A Rule stores a set of production rules of Name
+type Rule struct {
+	Name string               `json:"-"`
+	Body map[uint64]*RuleBody `json:"body,omitempty"`
+}
+
+// A RuleBody is one production rule
+type RuleBody struct {
+	Terms []*Term `json:"terms"`
+	F     *FMR    `json:"f,omitempty"`
+}
+
+// TermType of grammar terms
+type TermType byte
+
+//go:generate jsonenums -type=TermType
+
+// definition of TermTypes
+const (
+	EOF TermType = iota
+	Nonterminal
+	Terminal
+	Any
+	List
+)
+
+// A Term is the component of RuleBody
+type Term struct {
+	Value string      `json:"value"`
+	Type  TermType    `json:"type"`
+	Meta  interface{} `json:"meta"`
+}
+
+// Key returns a unique key for Term t
+func (t *Term) Key() uint64 {
+	hash, err := hashstructure.Hash(t, nil)
+	if err != nil {
+		return 0
+	}
+	return hash
+}
+
+// Arg is the type of argument for functions
+type Arg struct {
+	Type  string      `json:"type"`
+	Value interface{} `json:"value"`
+}
+
+// FMR stands for Funtional Meaning Representation
