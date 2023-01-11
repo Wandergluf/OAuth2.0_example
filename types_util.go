@@ -10,4 +10,8 @@ func metaEqual(m1, m2 interface{}) bool {
 		return true
 	}
 	if m1 != nil && m2 != nil {
-		if Debug 
+		if Debug {
+			fmt.Println("In Equal:", m1, m2)
+		}
+		switch m1.(type) {
+		// meta f
