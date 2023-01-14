@@ -14,4 +14,6 @@ func metaEqual(m1, m2 interface{}) bool {
 			fmt.Println("In Equal:", m1, m2)
 		}
 		switch m1.(type) {
-		// meta f
+		// meta for (any)
+		case map[string]int:
+			t1 := m1.(map[string
