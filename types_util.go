@@ -16,4 +16,6 @@ func metaEqual(m1, m2 interface{}) bool {
 		switch m1.(type) {
 		// meta for (any)
 		case map[string]int:
-			t1 := m1.(map[string
+			t1 := m1.(map[string]int)
+			t2, ok2 := m2.(map[string]int)
+			if ok2 && len(t1) == le
