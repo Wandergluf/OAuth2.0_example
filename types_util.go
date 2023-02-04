@@ -21,4 +21,7 @@ func metaEqual(m1, m2 interface{}) bool {
 			if ok2 && len(t1) == len(t2) {
 				for k, v := range t1 {
 					if Debug {
-						fmt.Println
+						fmt.Println(k, v)
+					}
+					if w, ok := t2[k]; !ok || v != w {
+						if Debu
