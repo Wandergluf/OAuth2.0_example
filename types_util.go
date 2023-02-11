@@ -45,4 +45,8 @@ func metaEqual(m1, m2 interface{}) bool {
 }
 
 // Equal func for Term
-func (t *Term) Equal(t1 *Term) bo
+func (t *Term) Equal(t1 *Term) bool {
+	if t == nil && t1 == nil {
+		return true
+	}
+	if t == nil |
