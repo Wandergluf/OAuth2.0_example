@@ -35,4 +35,10 @@ func metaEqual(m1, m2 interface{}) bool {
 			// meta for terminal text
 		case string:
 			s1 := m1.(string)
-			s2, ok := m2.(s
+			s2, ok := m2.(string)
+			if ok && s1 == s2 {
+				return true
+			}
+		}
+	}
+	return
