@@ -28,4 +28,8 @@ func metaEqual(m1, m2 interface{}) bool {
 							fmt.Println(v, w, ok)
 						}
 						return false
-	
+					}
+				}
+				return true
+			}
+			// meta for terminal 
