@@ -24,4 +24,8 @@ func metaEqual(m1, m2 interface{}) bool {
 						fmt.Println(k, v)
 					}
 					if w, ok := t2[k]; !ok || v != w {
-						if Debu
+						if Debug {
+							fmt.Println(v, w, ok)
+						}
+						return false
+	
