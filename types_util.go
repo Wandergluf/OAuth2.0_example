@@ -59,4 +59,8 @@ func (t *Term) Equal(t1 *Term) bool {
 }
 
 // Equal func for RuleBody
-func (r *RuleBody) Equal(rb *RuleBody) 
+func (r *RuleBody) Equal(rb *RuleBody) bool {
+	if rb == nil && r == nil {
+		return true
+	}
+	if rb
