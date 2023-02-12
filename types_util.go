@@ -49,4 +49,8 @@ func (t *Term) Equal(t1 *Term) bool {
 	if t == nil && t1 == nil {
 		return true
 	}
-	if t == nil |
+	if t == nil || t1 == nil {
+		return false
+	}
+	if t.Value != t1.Value || t.Type != t1.Type {
+		
