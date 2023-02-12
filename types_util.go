@@ -58,4 +58,5 @@ func (t *Term) Equal(t1 *Term) bool {
 	return metaEqual(t.Meta, t1.Meta)
 }
 
-// Eq
+// Equal func for RuleBody
+func (r *RuleBody) Equal(rb *RuleBody) 
