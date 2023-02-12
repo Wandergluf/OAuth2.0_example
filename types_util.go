@@ -53,4 +53,9 @@ func (t *Term) Equal(t1 *Term) bool {
 		return false
 	}
 	if t.Value != t1.Value || t.Type != t1.Type {
-		
+		return false
+	}
+	return metaEqual(t.Meta, t1.Meta)
+}
+
+// Eq
