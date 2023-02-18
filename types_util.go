@@ -74,4 +74,8 @@ func (r *RuleBody) Equal(rb *RuleBody) bool {
 			return false
 		}
 	}
-	return r.F.Equ
+	return r.F.Equal(rb.F)
+}
+
+// Equal func for FMR
+func (f *FMR) 
