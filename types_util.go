@@ -70,4 +70,8 @@ func (r *RuleBody) Equal(rb *RuleBody) bool {
 		return false
 	}
 	for i, term := range rb.Terms {
-		if
+		if !term.Equal(r.Terms[i]) {
+			return false
+		}
+	}
+	return r.F.Equ
