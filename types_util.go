@@ -63,4 +63,7 @@ func (r *RuleBody) Equal(rb *RuleBody) bool {
 	if rb == nil && r == nil {
 		return true
 	}
-	if rb
+	if rb == nil || r == nil {
+		return false
+	}
+	if len(rb.Terms) != len(r.Te
