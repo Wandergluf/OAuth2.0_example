@@ -88,4 +88,7 @@ func (f *FMR) Equal(fmr *FMR) bool {
 	if f.Fn != fmr.Fn {
 		return false
 	}
-	if len(f.Args
+	if len(f.Args) != len(fmr.Args) {
+		return false
+	}
+	for i, arg := range fmr.Args 
