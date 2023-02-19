@@ -80,4 +80,9 @@ func (r *RuleBody) Equal(rb *RuleBody) bool {
 // Equal func for FMR
 func (f *FMR) Equal(fmr *FMR) bool {
 	if f == nil && fmr == nil {
-		retu
+		return true
+	}
+	if !(f != nil && fmr != nil) {
+		return false
+	}
+	
