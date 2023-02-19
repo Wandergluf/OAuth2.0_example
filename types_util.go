@@ -95,4 +95,6 @@ func (f *FMR) Equal(fmr *FMR) bool {
 		if arg.Type != f.Args[i].Type {
 			return false
 		}
-		sw
+		switch arg.Type {
+		case "string":
+			s1, ok1 := arg.Value.(s
