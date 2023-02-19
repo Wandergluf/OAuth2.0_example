@@ -85,4 +85,7 @@ func (f *FMR) Equal(fmr *FMR) bool {
 	if !(f != nil && fmr != nil) {
 		return false
 	}
-	
+	if f.Fn != fmr.Fn {
+		return false
+	}
+	if len(f.Args
