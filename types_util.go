@@ -91,4 +91,8 @@ func (f *FMR) Equal(fmr *FMR) bool {
 	if len(f.Args) != len(fmr.Args) {
 		return false
 	}
-	for i, arg := range fmr.Args 
+	for i, arg := range fmr.Args {
+		if arg.Type != f.Args[i].Type {
+			return false
+		}
+		sw
