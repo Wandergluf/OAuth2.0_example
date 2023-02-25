@@ -108,4 +108,6 @@ func (f *FMR) Equal(fmr *FMR) bool {
 			if !ok1 || !ok2 || s1.Cmp(s2) != 0 {
 				return false
 			}
-		case "floa
+		case "float":
+			s1, ok1 := arg.Value.(*big.Float)
+			s2, ok2 := f.Args[i].V
