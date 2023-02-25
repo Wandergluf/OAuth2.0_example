@@ -102,4 +102,6 @@ func (f *FMR) Equal(fmr *FMR) bool {
 			if !ok1 || !ok2 || s1 != s2 {
 				return false
 			}
-		case "int
+		case "int":
+			s1, ok1 := arg.Value.(*big.Int)
+			s2, ok2 := f.Args[i].Value.(*
