@@ -99,4 +99,7 @@ func (f *FMR) Equal(fmr *FMR) bool {
 		case "string":
 			s1, ok1 := arg.Value.(string)
 			s2, ok2 := f.Args[i].Value.(string)
-			if !ok
+			if !ok1 || !ok2 || s1 != s2 {
+				return false
+			}
+		case "int
