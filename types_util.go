@@ -110,4 +110,6 @@ func (f *FMR) Equal(fmr *FMR) bool {
 			}
 		case "float":
 			s1, ok1 := arg.Value.(*big.Float)
-			s2, ok2 := f.Args[i].V
+			s2, ok2 := f.Args[i].Value.(*big.Float)
+			if !ok1 || !ok2 || s1.Cmp(s2) != 0 {
+				
