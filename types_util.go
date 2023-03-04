@@ -117,4 +117,8 @@ func (f *FMR) Equal(fmr *FMR) bool {
 		case "index":
 			s1, ok1 := arg.Value.(int)
 			s2, ok2 := f.Args[i].Value.(int)
-			if !ok1 || !ok2 || s1 
+			if !ok1 || !ok2 || s1 != s2 {
+				return false
+			}
+		case "func":
+			s1, ok
