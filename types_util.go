@@ -121,4 +121,6 @@ func (f *FMR) Equal(fmr *FMR) bool {
 				return false
 			}
 		case "func":
-			s1, ok
+			s1, ok1 := arg.Value.(*FMR)
+			s2, ok2 := f.Args[i].Value.(*FMR)
+			
